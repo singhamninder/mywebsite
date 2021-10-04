@@ -1,0 +1,357 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Amninder Singh</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script src="{% static 'js/pace.min.js' %}"></script>
+
+
+
+</head>
+
+<body id="top">
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <!-- <div class="header-logo">
+            <a class="site-logo" href="index.html"><img src="images/logo.png" alt="Homepage"></a>
+        </div> -->
+    
+        <nav class="header-nav-wrap">
+            <ul class="header-nav">
+                <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
+                <li><a class="smoothscroll"  href="#about" title="about">About</a></li>
+                <li><a class="smoothscroll"  href="#projects" title="projects">Projects</a></li>
+                <li><a class="smoothscroll"  href="#publications" title="publications">Publications</a></li>
+                <!-- <li><a class="smoothscroll"  href="#contact" title="contact">Contact</a></li> -->
+            </ul>
+        </nav>
+    
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+    
+    </header> <!-- end s-header -->
+
+    
+   <!-- home
+   ================================================== -->
+   {% for info in infos %}
+   <section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="{{info.mainImage.url}}" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+
+    <div class="overlay"></div>
+    <div class="shadow-overlay"></div>
+
+    <div class="home-content">
+
+        <div class="row home-content__main">
+
+            <h3>Hello There</h3>
+
+            <h1>
+                I am Amninder Singh.<br/> 
+                I am a Grad Student<br/>
+                at UC Riverside.
+            </h1>
+
+            <!-- <div class="home-content__buttons">
+                <a href="#works" class="smoothscroll btn btn--stroke">
+                    Latest Projects
+                </a>
+                
+                <a href="#about" class="smoothscroll btn btn--stroke">
+                    More About Me
+                </a>
+            </div> -->
+
+            <div class="home-content__scroll">
+                <a href="#about" class="scroll-link smoothscroll">
+                    <span>Scroll Down</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div> <!-- end home-content -->
+
+    <ul class="home-social">
+        <li>
+            <a href="{{info.linkedin}}" target="_blank"><i class="im im-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a>
+        </li>
+        <li>
+            <a href="{{info.twitter}}" target="_blank"><i class="im im-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+        </li>
+        <!-- <li>
+            <a href="#"><i class="im im-github" aria-hidden="true"></i><span>Github</span></a>
+        </li> -->
+        
+    </ul> 
+    
+
+    </section> <!-- end s-home -->
+
+    <!-- about
+    ================================================== -->
+
+    <section id="about" class="s-about target-section">
+        
+        <div class="row narrow section-intro has-bottom-sep">
+            <div class="col-full text-center">
+                <h3>About</h3>
+                <h1>More About Me</h1>
+                <p class="lead">{{info.short_intro}}</p>
+            </div>
+        </div>
+        
+
+        <div class="row about-content">
+
+            <div class="col-six tab-full left">
+                <h3>Education</h3>
+                
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">Jan 2018 - Present</p>
+                        <h5>University of California, Riverside </h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>Ph.D., Environmental Sciences (Soil &Water)</p>
+                    </div>
+
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">Aug 2015 - Dec 2017</p>
+                        <h5>California State University (CSU), Fresno</h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>MS, Plant Science</p>
+                    </div>
+
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">Aug 2011 - Jul 2015</p>
+                        <h5>Punjab Agricultural University, India</h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>BS, Agriculture</p>
+                    </div>
+            </div>
+
+            
+            <div class="col-six tab-full right">
+                <h3>Skills</h3>
+                {%for skill in skills %}
+                    <li>
+                    <strong>{{skill.name}}</strong>
+                    <p>{{skill.description}}</p>
+                    </li>
+                {% endfor %}  
+
+                <p class="blog-content__tags">
+                    <span>Other Skills</span>
+                    {% for skill in otherskills %}
+                    <span class="blog-content__tag-list">
+                        <a>{{skill}}</a>    
+                    </span>
+                    {% endfor %}
+                </p>
+                
+            </div>
+            
+        </div> <!-- end about-content -->
+
+        <div class="row about-content about-content--buttons">
+
+            <div class="col-six tab-full left">
+                <a href="{{info.cv.url}}" target="_blank" class="btn btn--primary full-width">Download My CV</a>
+            </div>
+            
+
+        </div> <!-- end about-content buttons -->
+
+
+        <div class="row about-content about-content--timeline">
+
+            <div class="col-full text-center">
+                <h3>Work Experience.</h3>
+            </div>
+
+            
+            <div class="col-six tab-full left">
+                <div class="timeline">
+                    {% for work in works %}
+                    <div class="timeline__block">
+                        <div class="timeline__bullet"></div>
+                        <div class="timeline__header">
+                            <p class="timeline__timeframe">{{work.startdate}} - {{work.enddate}}</p>
+                            <h3>{{work.place}}</h3>
+                            <h5>{{work.title}}</h5>
+                        </div>
+                        {% if work.description %}
+                        <div class="timeline__desc">
+                            <p>{{work.description}}</p>
+                        </div>
+                        {% endif %}
+                    </div> 
+                    {% endfor %}
+                </div> 
+            </div> 
+            
+        </div> 
+    </section> <!-- end about -->
+
+    <!-- projects
+    ================================================== -->
+    <section id="projects" class="s-works target-section">
+
+        <div class="row narrow section-intro has-bottom-sep">
+            <div class="col-full">
+                <h3>Projects</h3>
+            </div>
+        </div>
+        
+        <div class="row masonry-wrap">
+            <div class="masonry">
+                
+                {% for project in projects %}
+                <div class="masonry__brick">
+                    <div class="item-folio">   
+                        <div class="item-folio__thumb">
+                            <a href="{% url 'project' project.id %}" class="thumb-link" data-size="1050x700">
+                                <img src="{{project.featured_image.url}}"
+                                style="min-height: 300px; 
+                                max-height: 300px;">
+                                <!-- // Remove style part once projects are more than 4 -->
+                                <span class="shadow-overlay"></span>
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                {{project.title}}
+                            </h3>
+                        </div>
+                        <!-- {% if project.source_link %}
+                        <a href="{{project.source_link}}" target="_blank" class="item-folio__project-link" title="Project link">
+                            <i class="im im-link"></i>
+                        </a>
+                        {% endif %} -->
+
+                        {% if project.publication_link %}
+                        <a href="{{project.publication_link}}" target="_blank" class="item-folio__project-link" title="Publication link">
+                            <i class="im im-link"></i>
+                        </a>
+                        {% endif %}
+
+                    </div> 
+                </div> 
+                {% endfor %}
+
+            </div>
+        </div> <!-- end masonry -->
+    </section> <!-- end works -->
+
+    <!-- publications
+    ================================================== -->
+    <section id="publications" class="s-blog target-section">
+
+        <div class="row narrow section-intro has-bottom-sep">
+            <div class="col-full">
+                <h3>Pulications</h3>
+                <!-- <h1>Peer-reviewed</h1> -->
+                <!-- <p class="lead">Peer-reviewed</p> -->
+            </div>
+        </div>
+    
+        {% for publication in publications %} 
+        <div class="row blog-content">                       
+                    <article class="col-block">                   
+                            <p><a href={{publication.link}} target="_blank" style="color: black">{{publication.title}}</a></p>
+                          
+                    </article>   
+        </div> 
+        {% endfor %}
+    </section> <!-- end s-blog -->
+
+    <!-- contact
+    ================================================== -->
+
+
+    <!-- footer
+    ================================================== -->
+    
+    <footer>
+        
+        <div class="row">
+            <div class="col-full">
+    
+                <ul class="footer-social">
+                   
+                    <li><a href="{{info.linkedin}}" target="_blank">
+                        <i class="im im-linkedin" aria-hidden="true"></i>
+                        <span>LinkedIn</span>
+                    </a></li>
+    
+                    <li><a href="{{info.twitter}}" target="_blank">
+                        <i class="im im-twitter" aria-hidden="true"></i>
+                        <span>Twitter</span>
+                    </a></li>
+                    
+                </ul>
+                    
+            </div> 
+        </div>
+    
+        <div class="row footer-bottom">
+    
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>© Amninder Singh</span> 
+                    <span>Design by <a href="https://www.styleshout.com/">styleshout</a></span>	
+                </div>
+    
+                <div class="go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                    </div>
+            </div>
+    
+        </div> <!-- end footer-bottom -->
+    
+    </footer> <!-- end footer -->
+    {% endfor %}
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+
+</body>
+
+</html>
+
+
+
