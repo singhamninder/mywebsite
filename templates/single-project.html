@@ -35,7 +35,7 @@
     ================================================== -->
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
-
+    
 </head>
 
 <body id="top">
@@ -94,7 +94,7 @@
 
         <div class="row blog-content">
             <div class="col-full blog-content__main">
-                <p> {{project.description}}</p>
+                <p> {{project.description|linebreaks}}</p>
                 
                 <p class="blog-content__tags">
                     <span>Tags</span>
@@ -104,19 +104,55 @@
                         
                     </span>
                     {% endfor %}
-                <p>
-                <img src="{{project.featured_image.url}}" >
-                </p>
-
-                <!-- <h2>Large Heading</h2> -->
                 </p>
                 
-
             </div><!-- end blog-content__main -->
+
         </div> <!-- end blog-content -->
 
+        {% comment %}
+        <div class="s-testimonials">
+
+            <div class="overlay"></div>
+    
+            <div class="row testimonials">
+    
+                <div class="col-full testimonials__slider">
+    
+                    <div class="testimonials__slide">
+                        <img src="{{project.image1.url}}" alt="" 
+                        style="min-height: 300px; 
+                        max-height: 300px;
+                        min-width: 500px; 
+                        max-width: 500px;">
+                       <p></p>
+                    </div>
+    
+                    <div class="testimonials__slide">
+                        <img src="{{project.image2.url}}" alt="" 
+                        style="min-height: 300px; 
+                        max-height: 300px;
+                        min-width: 500px; 
+                        max-width: 500px;">
+                        
+                    </div>
+    
+                    <div class="testimonials__slide">
+                        <img src="{{project.image3.url}}" alt=""
+                        style="min-height: 300px; 
+                        max-height: 300px;
+                        min-width: 500px; 
+                        max-width: 500px;">
+                        
+                    </div>
+                </div> 
+            </div> 
+        </div> 
+        {% endcomment %}
+        
     </article>
   
+    
 
     <!-- footer
     ================================================== -->
