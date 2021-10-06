@@ -1,6 +1,5 @@
 {% load static %}
 <!DOCTYPE html>
-
 <html class="no-js" lang="en">
 <head>
 
@@ -26,8 +25,6 @@
     <script src="{% static 'js/modernizr.js' %}"></script>
     <script src="{% static 'js/pace.min.js' %}"></script>
 
-
-
 </head>
 
 <body id="top">
@@ -36,7 +33,7 @@
     <header class="s-header">
 
         <!-- <div class="header-logo">
-            <a class="site-logo" href="index.html"><img src="images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href=""><img src="" alt="Homepage"></a>
         </div> -->
     
         <nav class="header-nav-wrap">
@@ -75,7 +72,7 @@
             </h1>
 
             <!-- <div class="home-content__buttons">
-                <a href="#works" class="smoothscroll btn btn--stroke">
+                <a href="#projects" class="smoothscroll btn btn--stroke">
                     Latest Projects
                 </a>
                 
@@ -105,10 +102,12 @@
             <a href="#"><i class="im im-github" aria-hidden="true"></i><span>Github</span></a>
         </li> -->
         
+        
+        
     </ul> 
     
 
-    </section> <!-- end s-home -->
+    </section> 
 
     <!-- about
     ================================================== -->
@@ -238,7 +237,6 @@
                                 <img src="{{project.featured_image.url}}"
                                 style="min-height: 300px; 
                                 max-height: 300px;">
-                                <!-- // Remove style part once projects are more than 4 -->
                                 <span class="shadow-overlay"></span>
                             </a>
                         </div>
@@ -265,8 +263,8 @@
                 {% endfor %}
 
             </div>
-        </div> <!-- end masonry -->
-    </section> <!-- end works -->
+        </div> 
+    </section> 
 
     <!-- publications
     ================================================== -->
@@ -275,8 +273,6 @@
         <div class="row narrow section-intro has-bottom-sep">
             <div class="col-full">
                 <h3>Pulications</h3>
-                <!-- <h1>Peer-reviewed</h1> -->
-                <!-- <p class="lead">Peer-reviewed</p> -->
             </div>
         </div>
     
@@ -288,7 +284,7 @@
                     </article>   
         </div> 
         {% endfor %}
-    </section> <!-- end s-blog -->
+    </section> 
 
     <!-- contact
     ================================================== -->
@@ -298,7 +294,9 @@
     ================================================== -->
     
     <footer>
-        
+            <h2 class="h06" style="color:rgba(170, 32, 32, 0.699)">Get in touch</h2>
+            <strong style="color:white">asing075@ucr.edu</strong>
+             
         <div class="row">
             <div class="col-full">
     
@@ -318,13 +316,14 @@
                     
             </div> 
         </div>
-    
+
+        
         <div class="row footer-bottom">
     
             <div class="col-twelve">
                 <div class="copyright">
                     <span>© Amninder Singh 2021</span> 
-                    <span>Design by <a href="https://www.styleshout.com/">styleshout</a></span>	
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>	
                 </div>
     
                 <div class="go-top">
