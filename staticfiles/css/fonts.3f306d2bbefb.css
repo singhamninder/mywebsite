@@ -1,0 +1,98 @@
+/* ===================================================================
+ * fonts.scss
+ *
+ * ------------------------------------------------------------------- */
+
+
+/*
+ * libre baskerville
+================================================================================ */
+
+@font-face {
+    font-family: "librebaskerville-regular";
+    src: url("../fonts/librebaskerville/librebaskerville-regular-webfont.520ff79ac50e.woff2") format("woff2"), url("../fonts/librebaskerville/librebaskerville-regular-webfont.c1d1c75cc10d.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "librebaskerville-italic";
+    src: url("../fonts/librebaskerville/librebaskerville-italic-webfont.4ba92be4076c.woff2") format("woff2"), url("../fonts/librebaskerville/librebaskerville-italic-webfont.70e8ec15e18a.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "librebaskerville-bold";
+    src: url("../fonts/librebaskerville/librebaskerville-bold-webfont.1c87f16b386b.woff2") format("woff2"), url("../fonts/librebaskerville/librebaskerville-bold-webfont.c4711930c3a7.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+
+/*
+ * montserrat
+================================================================================ */
+
+@font-face {
+    font-family: "montserrat-black";
+    src: url("../fonts/montserrat/montserrat-black-webfont.43d2a5fa7a17.woff2") format("woff2"), url("../fonts/montserrat/montserrat-black-webfont.89d032959e4e.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "montserrat-extrabold";
+    src: url("../fonts/montserrat/montserrat-extrabold-webfont.10aed9a35293.woff2") format("woff2"), url("../fonts/montserrat/montserrat-extrabold-webfont.93c19adcb76b.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "montserrat-bold";
+    src: url("../fonts/montserrat/montserrat-bold-webfont.34fac8b61be1.woff2") format("woff2"), url("../fonts/montserrat/montserrat-bold-webfont.b019c4fcda18.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "montserrat-semibold";
+    src: url("../fonts/montserrat/montserrat-semibold-webfont.bb42f178e656.woff2") format("woff2"), url("../fonts/montserrat/montserrat-semibold-webfont.502ec610aacb.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "montserrat-medium";
+    src: url("../fonts/montserrat/montserrat-medium-webfont.09cb165fc2fe.woff2") format("woff2"), url("../fonts/montserrat/montserrat-medium-webfont.13f56822542b.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "montserrat-regular";
+    src: url("../fonts/montserrat/montserrat-regular-webfont.0891dad6bdd1.woff2") format("woff2"), url("../fonts/montserrat/montserrat-regular-webfont.fa6c61d2daa7.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "montserrat-light";
+    src: url("../fonts/montserrat/montserrat-light-webfont.6ef39b20d8c2.woff2") format("woff2"), url("../fonts/montserrat/montserrat-light-webfont.292573529703.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "montserrat-extralight";
+    src: url("../fonts/montserrat/montserrat-extralight-webfont.bb3f344a535c.woff2") format("woff2"), url("../fonts/montserrat/montserrat-extralight-webfont.789902ee9885.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "montserrat-thin";
+    src: url("../fonts/montserrat/montserrat-thin-webfont.47f0df96995f.woff2") format("woff2"), url("../fonts/montserrat/montserrat-thin-webfont.43725e71ed30.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
