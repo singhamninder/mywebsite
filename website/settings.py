@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-8#@!1v9e_gkp65sw#2ieiavq&mbp1v7l-)gkkjbyccdd)x9w4f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'amnindersingh.herokuapp.com']
 
 
 # Application definition
@@ -147,3 +147,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_HOST_USER = ''
 # EMAIL_HOST_PASSWORD = '' 
 # EMAIL_USE_TLS = True
+
+
+if os.getcwd() == '/app':
+    DEBUG = False
