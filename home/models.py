@@ -71,16 +71,16 @@ class Publication(models.Model):
     class Meta:
         ordering = ['-no']
 
-# class Contact(models.Model):
-#     name = models.CharField(max_length=60)
-#     email = models.EmailField(max_length=300)
-#     subject = models.CharField(max_length=200)
-#     message = models.TextField(max_length=1000)
-#     is_read = models.BooleanField(default=False, null=True)
-#     created = models.DateTimeField(auto_now_add=True)
+class Contact(models.Model):
+    contactName = models.CharField(max_length=60)
+    contactEmail = models.EmailField(max_length=300)
+    contactSubject = models.CharField(max_length=200)
+    contactMessage = models.TextField(max_length=1000)
+    is_read = models.BooleanField(default=False, null=True)
+    created = models.DateTimeField(auto_now_add=True)
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.contactName
 
-#     class Meta:
-#         ordering = ['is_read', '-created']
+    class Meta:
+        ordering = ['is_read', '-created']

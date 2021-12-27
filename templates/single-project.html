@@ -1,12 +1,7 @@
+{% load static %}
 <!DOCTYPE html>
 
-{% load static %}
-<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
 <html class="no-js" lang="en">
-
-
 <head>
 
     <!--- basic page needs
@@ -50,7 +45,7 @@
             <ul class="header-nav">
                 <li><a href="{% url 'home' %}" title="home">Home</a></li>
                 <li><a href="{% url 'home' %}#about" title="about">About</a></li>
-                <li class="current"><a href="{% url 'home' %}#projects" title="blog">Projects</a></li>
+                <li class="current"><a href="{% url 'home' %}#projects" title="projects">Projects</a></li>
                 <li><a href="{% url 'home' %}#publications" title="publications">Publications</a></li>
                 <li><a href="{% url 'home' %}#contact" title="contact">Contact</a></li>	
             </ul>
@@ -164,16 +159,21 @@
     
                 <ul class="footer-social">
                    
-                    <li><a href="#0">
+                    <li><a href="https://www.linkedin.com/in/amninder-singh/" target="_blank">
                         <i class="im im-linkedin" aria-hidden="true"></i>
                         <span>LinkedIn</span>
                     </a></li>
     
-                    <li><a href="#0">
+                    <li><a href="https://twitter.com/amnindersahota" target="_blank">
                         <i class="im im-twitter" aria-hidden="true"></i>
                         <span>Twitter</span>
                     </a></li>
                     
+                    <li><a href="mailto:asing075@ucr.edu">
+                        <i class="im im-mail" aria-hidden="true"></i>
+                        <span>Email</span>
+                    </a></li>
+
                 </ul>
                     
             </div> 
@@ -184,7 +184,7 @@
             <div class="col-twelve">
                 <div class="copyright">
                     <span>© Amninder Singh</span> 
-                    <span>Design by <a href="https://www.styleshout.com/">styleshout</a></span>	
+                    <span>Design: <a href="https://www.styleshout.com/">styleshout</a></span>	
                 </div>
     
                 <div class="go-top">
@@ -196,49 +196,6 @@
     
     </footer> <!-- end footer -->
     
-    <!-- photoswipe background
-    ================================================== -->
-    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
-
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-
-            <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-            </div>
-
-            <div class="pswp__ui pswp__ui--hidden">
-                <div class="pswp__top-bar">
-                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title=
-                    "Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title=
-                    "Zoom in/out"></button>
-                    <div class="pswp__preloader">
-                        <div class="pswp__preloader__icn">
-                            <div class="pswp__preloader__cut">
-                                <div class="pswp__preloader__donut"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    <div class="pswp__share-tooltip"></div>
-                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title=
-                "Next (arrow right)"></button>
-                <div class="pswp__caption">
-                    <div class="pswp__caption__center"></div>
-                </div>
-            </div>
-
-        </div>
-
-    </div><!-- end photoSwipe background -->
-
-
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
 
     <!-- Java Script
     ================================================== -->

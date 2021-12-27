@@ -1,33 +1,41 @@
-from django.shortcuts import render
-from .models import Info, Skill, Project, Publication, Work
+from django.shortcuts import redirect, render
+from .models import Info, Skill, Project, Publication, Work, Contact
+from django.contrib import messages
 
 ## for sending email and contact
-# from .forms import ContactForm
 # from django.core.mail import send_mail
-# from django.core.checks import messages
 # from django.conf import settings
-
 
 def home(request):
     infos = Info.objects.all()
     skills = Skill.objects.exclude(description__exact="")
     otherskills = Skill.objects.filter(description="")
-    works = Work.objects.all()
+    lworks = Work.objects.filter(startdate__startswith="Jan")
+    rworks = Work.objects.exclude(startdate__startswith="Jan")
     projects = Project.objects.all()
     publications = Publication.objects.all()
+   
+    if request.method == 'POST':
+        contact = Contact()
+        contactName=request.POST.get('contactName')
+        contactEmail=request.POST.get('contactEmail')
+        contactSubject=request.POST.get('contactSubject')
+        contactMessage=request.POST.get('contactMessage')
 
-    # form = ContactForm()
-    # if request.method == 'POST':
-    #     form = ContactForm(request.POST)
-    #     if form.is_valid():
+        contact.contactName=contactName
+        contact.contactEmail=contactEmail
+        contact.contactSubject=contactSubject
+        contact.contactMessage=contactMessage
+        contact.save()
+        messages.success(request, 'Your message was sent, thank you!')
+        return redirect('home')
 
     context = {
         'infos':infos,
         'skills':skills,'otherskills':otherskills,
-        'works':works,
+        'lworks':lworks,'rworks':rworks,
         'projects':projects,
         'publications':publications,
-        # 'form':form,
     }
 
     return render(request, 'index.html', context)
