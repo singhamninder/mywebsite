@@ -14,9 +14,10 @@ def home(request):
     rworks = Work.objects.exclude(startdate__startswith="Jan")
     projects = Project.objects.all()
     publications = Publication.objects.all()
-   
+
     if request.method == 'POST':
         contact = Contact()
+
         contactName=request.POST.get('contactName')
         contactEmail=request.POST.get('contactEmail')
         contactSubject=request.POST.get('contactSubject')
@@ -28,6 +29,7 @@ def home(request):
         contact.contactMessage=contactMessage
         contact.save()
         messages.success(request, 'Your message was sent, thank you!')
+
         return redirect('home')
 
     context = {

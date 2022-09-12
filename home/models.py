@@ -1,6 +1,8 @@
 from django.db import models
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 
-class Info(models.Model): 
+class Info(models.Model):
     cv = models.FileField()
     mainImage = models.ImageField(null=True, blank=True, default="default.jpg")
     short_intro = models.TextField(null=True, blank=True)
@@ -8,9 +10,9 @@ class Info(models.Model):
     twitter = models.CharField(max_length=2000, null=True, blank=True)
 
     def __str__(self):
-        return str(self.short_intro)
+        return "MyInformation"
 
-class Skill(models.Model): 
+class Skill(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -40,8 +42,8 @@ class Project(models.Model):
     image1 = models.ImageField(null=True, blank=True, default="default.jpg")
     image2 = models.ImageField(null=True, blank=True, default="default.jpg")
     image3 = models.ImageField(null=True, blank=True, default="default.jpg")
+    project_link = models.TextField(max_length=500, null=True, blank=True)
     publication_link = models.TextField(max_length=2000, null=True, blank=True)
-    source_link = models.CharField(max_length=2000, null=True, blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -50,8 +52,8 @@ class Project(models.Model):
 
     class Meta:
         ordering = ['-created']
-    
-    
+
+
 class Tag(models.Model):
     name = models.CharField(max_length=200)
 
@@ -76,6 +78,8 @@ class Contact(models.Model):
     contactEmail = models.EmailField(max_length=300)
     contactSubject = models.CharField(max_length=200)
     contactMessage = models.TextField(max_length=1000)
+    # captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+
     is_read = models.BooleanField(default=False, null=True)
     created = models.DateTimeField(auto_now_add=True)
 

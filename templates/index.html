@@ -35,7 +35,7 @@
         <!-- <div class="header-logo">
             <a class="site-logo" href=""><img src="" alt="Homepage"></a>
         </div> -->
-    
+
         <nav class="header-nav-wrap">
             <ul class="header-nav">
                 <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
@@ -45,12 +45,12 @@
                 <li><a class="smoothscroll"  href="#contact" title="contact">Contact</a></li>
             </ul>
         </nav>
-    
+
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
-    
+
     </header> <!-- end s-header -->
 
-    
+
    <!-- home
    ================================================== -->
 {% for info in infos %}
@@ -66,20 +66,19 @@
             <h3>Hello There</h3>
 
             <h1>
-                I am Amninder Singh.<br/> 
+                I am Amninder Singh.<br/>
                 I am a Researcher<br/>
-                at UC Riverside.
+                at USDA Salinity Lab.
             </h1>
 
-            <!-- <div class="home-content__buttons">
-                <a href="#projects" class="smoothscroll btn btn--stroke">
-                    Latest Projects
-                </a>
-                
+             <div class="home-content__buttons">
                 <a href="#about" class="smoothscroll btn btn--stroke">
                     More About Me
                 </a>
-            </div> -->
+                <a href="#projects" class="smoothscroll btn btn--stroke">
+                    Projects
+                </a>
+            </div>
 
             <div class="home-content__scroll">
                 <a href="#about" class="scroll-link smoothscroll">
@@ -101,19 +100,23 @@
         <li>
             <a href="mailto:asing075@ucr.edu"><i class="im im-mail" aria-hidden="true"></i><span>Email</span></a>
         </li>
-        
-        
-        
-    </ul> 
-    
+        <li>
+            <a href="https://github.com/singhamninder" target = "_blank"><i class="im im-github" aria-hidden="true"></i><span>GitHub</span></a>
+        </li>
 
-    </section> 
+
+
+
+    </ul>
+
+
+    </section>
 
     <!-- about
     ================================================== -->
 
     <section id="about" class="s-about target-section">
-        
+
         <div class="row narrow section-intro has-bottom-sep">
             <div class="col-full text-center">
                 <h3>About</h3>
@@ -121,15 +124,15 @@
                 <p class="lead">{{info.short_intro}}</p>
             </div>
         </div>
-        
+
 
         <div class="row about-content">
 
             <div class="col-six tab-full left">
                 <h3>Education</h3>
-                
+
                     <div class="timeline__header">
-                        <p class="timeline__timeframe">Jan 2018 - Present</p>
+                        <p class="timeline__timeframe">2018 - 2021</p>
                         <h5>University of California, Riverside </h5>
                     </div>
                     <div class="timeline__desc">
@@ -137,7 +140,7 @@
                     </div>
 
                     <div class="timeline__header">
-                        <p class="timeline__timeframe">Aug 2015 - Dec 2017</p>
+                        <p class="timeline__timeframe">2015 - 2017</p>
                         <h5>California State University (CSU), Fresno</h5>
                     </div>
                     <div class="timeline__desc">
@@ -145,7 +148,7 @@
                     </div>
 
                     <div class="timeline__header">
-                        <p class="timeline__timeframe">Aug 2011 - Jul 2015</p>
+                        <p class="timeline__timeframe">2011 - 2015</p>
                         <h5>Punjab Agricultural University, India</h5>
                     </div>
                     <div class="timeline__desc">
@@ -153,7 +156,7 @@
                     </div>
             </div>
 
-            
+
             <div class="col-six tab-full right">
                 <h3>Skills</h3>
                 {%for skill in skills %}
@@ -161,19 +164,19 @@
                     <strong>{{skill.name}}</strong>
                     <p>{{skill.description}}</p>
                     </li>
-                {% endfor %}  
+                {% endfor %}
 
                 <p class="blog-content__tags">
                     <span>Other Skills</span>
                     {% for skill in otherskills %}
                     <span class="blog-content__tag-list">
-                        <a>{{skill}}</a>    
+                        <a>{{skill}}</a>
                     </span>
                     {% endfor %}
                 </p>
-                
+
             </div>
-            
+
         </div> <!-- end about-content -->
 
         <div class="row about-content about-content--buttons">
@@ -181,7 +184,7 @@
             <div class="col-six tab-full left">
                 <a href="{{info.cv.url}}" target="_blank" class="btn btn--primary full-width">Download My CV</a>
             </div>
-            
+
 
         </div> <!-- end about-content buttons -->
 
@@ -192,7 +195,7 @@
                 <h3>Work Experience.</h3>
             </div>
 
-            
+
             <div class="col-six tab-full left">
                 <div class="timeline">
                     {% for work in lworks %}
@@ -208,10 +211,10 @@
                             <p>{{work.description}}</p>
                         </div>
                         {% endif %}
-                    </div> 
+                    </div>
                     {% endfor %}
-                </div> 
-            </div> 
+                </div>
+            </div>
 
             <div class="col-six tab-full right">
                 <div class="timeline">
@@ -228,12 +231,12 @@
                             <p>{{work.description}}</p>
                         </div>
                         {% endif %}
-                    </div> 
+                    </div>
                     {% endfor %}
-                </div> 
-            </div>            
-            
-        </div> 
+                </div>
+            </div>
+
+        </div>
     </section> <!-- end about -->
 
     <!-- projects
@@ -245,17 +248,17 @@
                 <h3>Projects</h3>
             </div>
         </div>
-        
+
         <div class="row masonry-wrap">
             <div class="masonry">
-                
+
                 {% for project in projects %}
                 <div class="masonry__brick">
-                    <div class="item-folio">   
+                    <div class="item-folio">
                         <div class="item-folio__thumb">
                             <a href="{% url 'project' project.id %}" class="thumb-link" data-size="1050x700">
                                 <img src="{{project.featured_image.url}}"
-                                style="min-height: 300px; 
+                                style="min-height: 300px;
                                 max-height: 300px;">
                                 <span class="shadow-overlay"></span>
                             </a>
@@ -266,25 +269,24 @@
                                 {{project.title}}
                             </h3>
                         </div>
-                        <!-- {% if project.source_link %}
-                        <a href="{{project.source_link}}" target="_blank" class="item-folio__project-link" title="Project link">
+
+                        {% if project.project_link %}
+                        <a href="{{project.project_link}}" target="_blank" class="item-folio__project-link" title="Project link">
                             <i class="im im-link"></i>
                         </a>
-                        {% endif %} -->
-
-                        {% if project.publication_link %}
+                        {% elif project.publication_link%}
                         <a href="{{project.publication_link}}" target="_blank" class="item-folio__project-link" title="Publication link">
                             <i class="im im-link"></i>
                         </a>
                         {% endif %}
 
-                    </div> 
-                </div> 
+                    </div>
+                </div>
                 {% endfor %}
 
             </div>
-        </div> 
-    </section> 
+        </div>
+    </section>
 
 
     <!-- publications
@@ -293,19 +295,19 @@
 
         <div class="row narrow section-intro has-bottom-sep">
             <div class="col-full">
-                <h3>Pulications</h3>
+                <h3>Publications</h3>
             </div>
         </div>
-    
-        {% for publication in publications %} 
-        <div class="row blog-content">                       
-                    <article class="col-block">                   
+
+        {% for publication in publications %}
+        <div class="row blog-content">
+                    <article class="col-block">
                             <p><a href={{publication.link}} target="_blank" style="color: black">{{publication.title}}</a></p>
-                          
-                    </article>   
-        </div> 
+
+                    </article>
+        </div>
         {% endfor %}
-    </section> 
+    </section>
 
     <!-- footer
     ================================================== -->
@@ -316,17 +318,17 @@
     <!-- footer
     ================================================== -->
     <footer>
-             
+
         <div class="row">
             <div class="col-full">
-    
+
                 <ul class="footer-social">
-                   
+
                     <li><a href="{{info.linkedin}}" target="_blank">
                         <i class="im im-linkedin" aria-hidden="true"></i>
                         <span>LinkedIn</span>
                     </a></li>
-    
+
                     <li><a href="{{info.twitter}}" target="_blank">
                         <i class="im im-twitter" aria-hidden="true"></i>
                         <span>Twitter</span>
@@ -337,27 +339,32 @@
                         <span>Email</span>
                     </a></li>
 
+                    <li><a href="https://github.com/singhamninder" target = "_blank">
+                    <i class="im im-github" aria-hidden="true"></i>
+                    <span>GitHub</span>
+                    </a></li>
+
                 </ul>
-                    
-            </div> 
+
+            </div>
         </div>
 
-        
+
         <div class="row footer-bottom">
-    
+
             <div class="col-twelve">
                 <div class="copyright">
-                    <span>© Amninder Singh 2021</span> 
-                    <span>Design: <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>	
+                    <span>© Amninder Singh 2021-2022</span>
+                    <span>Design: <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
                 </div>
-    
+
                 <div class="go-top">
                     <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
                     </div>
             </div>
-    
+
         </div> <!-- end footer-bottom -->
-    
+
     </footer> <!-- end footer -->
 
 {% endfor %}

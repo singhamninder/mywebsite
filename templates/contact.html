@@ -1,9 +1,8 @@
-    
     {% load static %}
     <section id="contact" class="s-contact target-section">
 
         <div class="overlay"></div>
-    
+
         <div class="row narrow section-intro">
             <div class="col-full">
                 <h3>Contact Me</h3>
@@ -13,12 +12,12 @@
         </div>
 
         <div class="row contact__main">
-            <div class="col-eight tab-full contact__form"> 
+            <div class="col-eight tab-full contact__form">
                 <form name="contactForm" id="contactForm" method="POST">
                     {% csrf_token %}
                     <fieldset>
-    
-                    <div class="form-field">                      
+
+                    <div class="form-field">
                         <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="" aria-required="true" class="full-width">
                     </div>
                     <div class="form-field">
@@ -30,41 +29,33 @@
                     <div class="form-field">
                         <textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
                     </div>
+                    <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
+                    <!--<div class="g-recaptcha" data-sitekey='6LfxZe8hAAAAAHxLP0ovIhhr8q1pjIb-ockXSaCH'></div>-->
 
                     <div class="form-field">
                         <button class="full-width btn--primary">Submit</button>
-                        <div class="submit-loader">
-                            <div class="text-loader">Sending...</div>
-                            <div class="s-loader">
-                                <div class="bounce1"></div>
-                                <div class="bounce2"></div>
-                                <div class="bounce3"></div>
-                            </div>
-                        </div>
-                        
                     </div>
-                        
+
                     </fieldset>
-                     
-                </form> 
-                {% for msg in messages %}                                   
+
+                </form>
+                {% for msg in messages %}
                     <div class="alert alert-success" role="alert">
                         {{ msg }}
-                    </div>    
-                {% endfor %} 
+                    </div>
+                {% endfor %}
             </div>
-           
 
-            <div class="col-four tab-full contact__infos">   
+
+            <div class="col-four tab-full contact__infos">
                 <h4 class="h06">Address</h4>
                 <p>
-                Environmental Sciences<br>
-                900 University Ave<br> 
-                Riverside, CA<br>
-                92521 U.S.
+                UC Riverside, Environmental Sciences<br>
+                USDA-ARS, U.S. Salinity Laboratory<br>
+                450 W. Big Springs Rd.<br>
+                Riverside, CA, 92507, USA
                 </p>
             </div>
         </div>
-    
-    </section> 
-    
+
+    </section>

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = os.environ.get(secret key)
 SECRET_KEY = 'django-insecure-8#@!1v9e_gkp65sw#2ieiavq&mbp1v7l-)gkkjbyccdd)x9w4f'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'amnindersingh.pythonanywhere.com', 'amnindersahota.com']
 
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     # 'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    
+    'captcha',
+
     'home.apps.HomeConfig',
 ]
 
@@ -145,11 +146,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+RECAPTCHA_PUBLIC_KEY = '6LfxZe8hAAAAAHxLP0ovIhhr8q1pjIb-ockXSaCH'
+RECAPTCHA_PRIVATE_KEY = '6LfxZe8hAAAAAHJeuCfPbcs5e0nA1M_1opa5upQL'
 
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_PORT = '587'
 # EMAIL_HOST_USER = ''
-# EMAIL_HOST_PASSWORD = '' 
+# EMAIL_HOST_PASSWORD = ''
 # EMAIL_USE_TLS = True
 

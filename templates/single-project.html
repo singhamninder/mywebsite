@@ -30,7 +30,7 @@
     ================================================== -->
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
-    
+
 </head>
 
 <body id="top">
@@ -38,8 +38,8 @@
  <!-- header
     ================================================== -->
     <header class="s-header">
-        
-        
+
+
 
         <nav class="header-nav-wrap">
             <ul class="header-nav">
@@ -47,20 +47,20 @@
                 <li><a href="{% url 'home' %}#about" title="about">About</a></li>
                 <li class="current"><a href="{% url 'home' %}#projects" title="projects">Projects</a></li>
                 <li><a href="{% url 'home' %}#publications" title="publications">Publications</a></li>
-                <li><a href="{% url 'home' %}#contact" title="contact">Contact</a></li>	
+                <li><a href="{% url 'home' %}#contact" title="contact">Contact</a></li>
             </ul>
         </nav>
 
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
     </header> <!-- end s-header -->
-  
 
-    
+
+
     <article class="blog-single">
 
         <div class="page-header page-header--single page-hero" style="background-image:url({{project.featured_image.url}});">
-        
+
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
@@ -80,27 +80,27 @@
                             <span>Jonathan Doe</span>
                         </li> -->
                     </ul>
-                    
+
                 </article>
             </div>
 
-        </div> 
+        </div>
 
 
         <div class="row blog-content">
             <div class="col-full blog-content__main">
                 <p> {{project.description|linebreaks}}</p>
-                
+
                 <p class="blog-content__tags">
                     <span>Tags</span>
                     {% for tag in project.tags.all %}
                     <span class="blog-content__tag-list">
                         <a>{{tag}}</a>
-                        
+
                     </span>
                     {% endfor %}
                 </p>
-                
+
             </div><!-- end blog-content__main -->
 
         </div> <!-- end blog-content -->
@@ -109,93 +109,93 @@
         <div class="s-testimonials">
 
             <div class="overlay"></div>
-    
+
             <div class="row testimonials">
-    
+
                 <div class="col-full testimonials__slider">
-    
+
                     <div class="testimonials__slide">
-                        <img src="{{project.image1.url}}" alt="" 
-                        style="min-height: 300px; 
+                        <img src="{{project.image1.url}}" alt=""
+                        style="min-height: 300px;
                         max-height: 300px;
-                        min-width: 500px; 
+                        min-width: 500px;
                         max-width: 500px;">
                        <p></p>
                     </div>
-    
+
                     <div class="testimonials__slide">
-                        <img src="{{project.image2.url}}" alt="" 
-                        style="min-height: 300px; 
+                        <img src="{{project.image2.url}}" alt=""
+                        style="min-height: 300px;
                         max-height: 300px;
-                        min-width: 500px; 
+                        min-width: 500px;
                         max-width: 500px;">
-                        
+
                     </div>
-    
+
                     <div class="testimonials__slide">
                         <img src="{{project.image3.url}}" alt=""
-                        style="min-height: 300px; 
+                        style="min-height: 300px;
                         max-height: 300px;
-                        min-width: 500px; 
+                        min-width: 500px;
                         max-width: 500px;">
-                        
+
                     </div>
-                </div> 
-            </div> 
-        </div> 
+                </div>
+            </div>
+        </div>
         {% endcomment %}
-        
+
     </article>
-  
-    
+
+
 
     <!-- footer
     ================================================== -->
-    
+
     <footer>
-        
+
         <div class="row">
             <div class="col-full">
-    
+
                 <ul class="footer-social">
-                   
+
                     <li><a href="https://www.linkedin.com/in/amninder-singh/" target="_blank">
                         <i class="im im-linkedin" aria-hidden="true"></i>
                         <span>LinkedIn</span>
                     </a></li>
-    
+
                     <li><a href="https://twitter.com/amnindersahota" target="_blank">
                         <i class="im im-twitter" aria-hidden="true"></i>
                         <span>Twitter</span>
                     </a></li>
-                    
+
                     <li><a href="mailto:asing075@ucr.edu">
                         <i class="im im-mail" aria-hidden="true"></i>
                         <span>Email</span>
                     </a></li>
 
                 </ul>
-                    
-            </div> 
+
+            </div>
         </div>
-    
+
         <div class="row footer-bottom">
-    
+
             <div class="col-twelve">
                 <div class="copyright">
-                    <span>© Amninder Singh</span> 
-                    <span>Design: <a href="https://www.styleshout.com/">styleshout</a></span>	
+                    <span>© Amninder Singh 2021-2022</span>
+                    <span>Design: <a href="https://www.styleshout.com/">styleshout</a></span>
                 </div>
-    
+
                 <div class="go-top">
                 <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
                 </div>
             </div>
-    
+
         </div> <!-- end footer-bottom -->
-    
+
     </footer> <!-- end footer -->
-    
+
 
     <!-- Java Script
     ================================================== -->
