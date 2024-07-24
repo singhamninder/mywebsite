@@ -1,6 +1,11 @@
-from django.shortcuts import redirect, render
-from .models import Info, Skill, Project, Publication, Work, Contact
-from django.contrib import messages
+from django.shortcuts import (
+                            # redirect,
+                            render,)
+from .models import (Info, Skill, Project, Publication, Work,
+                    # Contact,
+                    )
+
+# from django.contrib import messages
 
 ## for sending email and contact
 # from django.core.mail import send_mail
@@ -15,22 +20,22 @@ def home(request):
     projects = Project.objects.all()
     publications = Publication.objects.all()
 
-    if request.method == 'POST':
-        contact = Contact()
+    # if request.method == 'POST':
+    #     contact = Contact()
 
-        contactName=request.POST.get('contactName')
-        contactEmail=request.POST.get('contactEmail')
-        contactSubject=request.POST.get('contactSubject')
-        contactMessage=request.POST.get('contactMessage')
+    #     contactName=request.POST.get('contactName')
+    #     contactEmail=request.POST.get('contactEmail')
+    #     contactSubject=request.POST.get('contactSubject')
+    #     contactMessage=request.POST.get('contactMessage')
 
-        contact.contactName=contactName
-        contact.contactEmail=contactEmail
-        contact.contactSubject=contactSubject
-        contact.contactMessage=contactMessage
-        contact.save()
-        messages.success(request, 'Your message was sent, thank you!')
+    #     contact.contactName=contactName
+    #     contact.contactEmail=contactEmail
+    #     contact.contactSubject=contactSubject
+    #     contact.contactMessage=contactMessage
+    #     contact.save()
+    #     messages.success(request, 'Your message was sent, thank you!')
 
-        return redirect('home')
+    #     return redirect('home')
 
     context = {
         'infos':infos,

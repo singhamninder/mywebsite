@@ -1,58 +1,58 @@
-    {% load static %}
-    <section id="contact" class="s-contact target-section">
+    <!--{% load static %}-->
+    <!--<section id="contact" class="s-contact target-section">-->
 
-        <div class="overlay"></div>
+    <!--    <div class="overlay"></div>-->
 
-        <div class="row narrow section-intro">
-            <div class="col-full">
-                <h3>Contact Me</h3>
+    <!--    <div class="row narrow section-intro">-->
+    <!--        <div class="col-full">-->
+    <!--            <h3>Contact Me</h3>-->
                 <!-- <h1>Say Hello.</h1> -->
                 <!-- <p class="lead">Lorem ipsum Dolor adipia.</p> -->
-            </div>
-        </div>
+    <!--        </div>-->
+    <!--    </div>-->
 
-        <div class="row contact__main">
-            <div class="col-eight tab-full contact__form">
-                <form name="contactForm" id="contactForm" method="POST">
-                    {% csrf_token %}
-                    <fieldset>
+    <!--    <div class="row contact__main">-->
+    <!--        <div class="col-eight tab-full contact__form">-->
+    <!--            <form name="contactForm" id="contactForm" method="POST">-->
+    <!--                {% csrf_token %}-->
+    <!--                <fieldset>-->
 
-                    <div class="form-field">
-                        <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
-                    </div>
+    <!--                <div class="form-field">-->
+    <!--                    <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="" aria-required="true" class="full-width">-->
+    <!--                </div>-->
+    <!--                <div class="form-field">-->
+    <!--                    <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="" aria-required="true" class="full-width">-->
+    <!--                </div>-->
+    <!--                <div class="form-field">-->
+    <!--                    <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="" required="" aria-required="true" class="full-width">-->
+    <!--                </div>-->
+    <!--                <div class="form-field">-->
+    <!--                    <textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>-->
+    <!--                </div>-->
                     <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
                     <!--<div class="g-recaptcha" data-sitekey='6LfxZe8hAAAAAHxLP0ovIhhr8q1pjIb-ockXSaCH'></div>-->
 
-                    <div class="form-field">
-                        <button class="full-width btn--primary">Submit</button>
-                    </div>
+    <!--                <div class="form-field">-->
+    <!--                    <button class="full-width btn--primary">Submit</button>-->
+    <!--                </div>-->
 
-                    </fieldset>
+    <!--                </fieldset>-->
 
-                </form>
-                {% for msg in messages %}
-                    <div class="alert alert-success" role="alert">
-                        {{ msg }}
-                    </div>
-                {% endfor %}
-            </div>
+    <!--            </form>-->
+    <!--            {% for msg in messages %}-->
+    <!--                <div class="alert alert-success" role="alert">-->
+    <!--                    {{ msg }}-->
+    <!--                </div>-->
+    <!--            {% endfor %}-->
+    <!--        </div>-->
 
 
-            <div class="col-four tab-full contact__infos">
-                <h4 class="h06">Address</h4>
-                <p>
-                Los Angeles, CA
-                </p>
-            </div>
-        </div>
+    <!--        <div class="col-four tab-full contact__infos">-->
+    <!--            <h4 class="h06">Address</h4>-->
+    <!--            <p>-->
+    <!--            Los Angeles, CA-->
+    <!--            </p>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
-    </section>
+    <!--</section>-->

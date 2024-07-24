@@ -1,6 +1,6 @@
 from django.db import models
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV2Checkbox
+# from captcha.fields import ReCaptchaField
+# from captcha.widgets import ReCaptchaV2Checkbox
 
 class Info(models.Model):
     cv = models.FileField()
