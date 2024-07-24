@@ -10,8 +10,8 @@ def home(request):
     infos = Info.objects.all()
     skills = Skill.objects.exclude(description__exact="")
     otherskills = Skill.objects.filter(description="")
-    lworks = Work.objects.filter(title__in=["Data Scientist", "Geospatial Data Scientist", "Post-Doctoral Scholar"])
-    rworks = Work.objects.exclude(title__in=["Data Scientist", "Geospatial Data Scientist", "Post-Doctoral Scholar"])
+    lworks = Work.objects.filter(title__in=["Data Scientist", "Geospatial Data Scientist (Contract)", "Post-Doctoral Scholar"])
+    rworks = Work.objects.exclude(title__in=["Data Scientist", "Geospatial Data Scientist (Contract)", "Post-Doctoral Scholar"])
     projects = Project.objects.all()
     publications = Publication.objects.all()
 
