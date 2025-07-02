@@ -89,7 +89,7 @@
 
         <div class="row blog-content">
             <div class="col-full blog-content__main">
-                <p> {{project.description|linebreaks}}</p>
+                <p> {{project.description|urlize|linebreaks}}</p>
 
                 <p class="blog-content__tags">
                     <span>Tags</span>
@@ -103,7 +103,26 @@
 
             </div><!-- end blog-content__main -->
 
+            <!-- Add after the project description or wherever you want references to appear -->
+
+        {% if project.references.all %}
+        <div class="project-references">
+            <h3>References</h3>
+            <ul class="references-list">
+                {% for reference in project.references.all %}
+                <li>
+                    <a href="{{ reference.url }}" target="_blank" rel="noopener noreferrer">
+                        {{ reference.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <!-- End of references section -->
+
         </div> <!-- end blog-content -->
+        
 
         {% comment %}
         <div class="s-testimonials">
@@ -144,7 +163,7 @@
             </div>
         </div>
         {% endcomment %}
-
+         
     </article>
 
 
@@ -164,10 +183,10 @@
                         <span>LinkedIn</span>
                     </a></li>
 
-                    <li><a href="https://twitter.com/amnindersahota" target="_blank">
+                    <!-- <li><a href="https://twitter.com/amnindersahota" target="_blank">
                         <i class="im im-twitter" aria-hidden="true"></i>
                         <span>Twitter</span>
-                    </a></li>
+                    </a></li> -->
 
                     <li><a href="mailto:asing075@ucr.edu">
                         <i class="im im-mail" aria-hidden="true"></i>
@@ -183,7 +202,7 @@
 
             <div class="col-twelve">
                 <div class="copyright">
-                    <span>© Amninder Singh 2021-2024</span>
+                    <span>© Amninder Singh 2021-2025</span>
                     <span>Design: <a href="https://www.styleshout.com/">styleshout</a></span>
                 </div>
 

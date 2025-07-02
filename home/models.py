@@ -1,6 +1,8 @@
 from django.db import models
+
 # from captcha.fields import ReCaptchaField
 # from captcha.widgets import ReCaptchaV2Checkbox
+
 
 class Info(models.Model):
     cv = models.FileField()
@@ -12,6 +14,7 @@ class Info(models.Model):
     def __str__(self):
         return "MyInformation"
 
+
 class Skill(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
@@ -20,9 +23,10 @@ class Skill(models.Model):
     def __str__(self):
         return str(self.name)
 
+
 class Work(models.Model):
-    startdate = models.CharField(max_length=60,null=True, blank=True)
-    enddate = models.CharField(max_length=60,null=True, blank=True)
+    startdate = models.CharField(max_length=60, null=True, blank=True)
+    enddate = models.CharField(max_length=60, null=True, blank=True)
     title = models.CharField(max_length=200)
     place = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
@@ -32,7 +36,7 @@ class Work(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['-created']
+        ordering = ["-created"]
 
 
 class Project(models.Model):
@@ -44,14 +48,14 @@ class Project(models.Model):
     image3 = models.ImageField(null=True, blank=True, default="default.jpg")
     project_link = models.TextField(max_length=500, null=True, blank=True)
     publication_link = models.TextField(max_length=2000, null=True, blank=True)
-    tags = models.ManyToManyField('Tag', blank=True)
+    tags = models.ManyToManyField("Tag", blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
 
     class Meta:
-        ordering = ['-created']
+        ordering = ["-created"]
 
 
 class Tag(models.Model):
@@ -71,7 +75,8 @@ class Publication(models.Model):
         return self.no
 
     class Meta:
-        ordering = ['-no']
+        ordering = ["-no"]
+
 
 class Contact(models.Model):
     contactName = models.CharField(max_length=60)
@@ -87,4 +92,20 @@ class Contact(models.Model):
         return self.contactName
 
     class Meta:
-        ordering = ['is_read', '-created']
+        ordering = ["is_read", "-created"]
+
+
+# This model allows you to add references to each project, with a title and URL.
+class Reference(models.Model):
+    project = models.ForeignKey(
+        "Project", on_delete=models.CASCADE, related_name="references"
+    )
+    title = models.CharField(max_length=500)
+    url = models.URLField(max_length=2000)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["created"]
+
+    def __str__(self):
+        return f"{self.title[:50]}... - {self.project.title}"
