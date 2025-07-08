@@ -29,6 +29,14 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 
+if not DEBUG:
+    # Security Headers
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 # Application definition
 
@@ -131,6 +139,7 @@ MEDIA_URL = "/images/"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "static/images")
 
