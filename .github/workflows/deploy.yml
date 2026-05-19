@@ -1,0 +1,78 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  # Allow manual re-deploys without a code change (e.g. after a server reboot).
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Prevent two deploy jobs from running simultaneously against the same server.
+# cancel-in-progress: false queues the second run rather than cancelling it.
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Lightsail
+    runs-on: ubuntu-latest
+    # The "production" environment enables optional required-reviewer protection
+    # and scopes LIGHTSAIL_* secrets to this environment in GitHub settings.
+    environment: production
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up SSH key and known hosts
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          # Write the deploy private key.
+          echo "${{ secrets.LIGHTSAIL_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          # Populate known_hosts so StrictHostKeyChecking can verify the server.
+          # Value is the output of: ssh-keyscan -H <host>
+          echo "${{ secrets.LIGHTSAIL_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Run deploy script on server
+        env:
+          LIGHTSAIL_USER: ${{ secrets.LIGHTSAIL_USER }}
+          LIGHTSAIL_HOST: ${{ secrets.LIGHTSAIL_HOST }}
+          LIGHTSAIL_APP_DIR: ${{ secrets.LIGHTSAIL_APP_DIR }}
+          LIGHTSAIL_GUNICORN_SERVICE: ${{ secrets.LIGHTSAIL_GUNICORN_SERVICE }}
+        run: |
+          # Pipe the deploy script from the checked-out repo into bash on the server.
+          # This always runs the version of the script that matches the deployed commit.
+          # Arguments after 'bash -s' become positional parameters ($1, $2, $3) in the script.
+          # StrictHostKeyChecking=yes rejects unknown hosts; BatchMode=yes disables interactive prompts.
+          ssh -i ~/.ssh/deploy_key \
+            -o StrictHostKeyChecking=yes \
+            -o BatchMode=yes \
+            "${LIGHTSAIL_USER}@${LIGHTSAIL_HOST}" \
+            'bash -s' "${LIGHTSAIL_APP_DIR}" "${{ github.sha }}" "${LIGHTSAIL_GUNICORN_SERVICE}" \
+            < scripts/deploy_lightsail.sh
+
+      - name: Post-deploy smoke check
+        run: |
+          echo "Waiting for service to stabilise..."
+          sleep 8
+          HTTP_STATUS=$(
+            curl --silent --output /dev/null --write-out "%{http_code}" \
+              --max-time 30 --retry 3 --retry-delay 5 \
+              https://amnindersahota.com
+          )
+          echo "Smoke check HTTP status: ${HTTP_STATUS}"
+          if [ "${HTTP_STATUS}" != "200" ]; then
+            echo "::error::Smoke check failed — site returned HTTP ${HTTP_STATUS}"
+            echo "Check Nginx and Gunicorn logs on the server:"
+            echo "  sudo journalctl -u \$GUNICORN_SERVICE --no-pager -n 50"
+            echo "  sudo nginx -t && sudo journalctl -u nginx --no-pager -n 20"
+            exit 1
+          fi
+          echo "Smoke check passed — site is serving HTTP 200."

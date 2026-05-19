@@ -1737,11 +1737,11 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: .8;
-    background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#cc000000', GradientType=0);
+    opacity: .92;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.88) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.88) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.88) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#59000000', endColorstr='#e0000000', GradientType=0);
 }
 
 .s-home .overlay {
@@ -1750,8 +1750,8 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: .5;
-    background-color: #111111;
+    opacity: .62;
+    background-color: #0a0809;
 }
 
 .no-js .s-home {
@@ -4135,5 +4135,263 @@ article.blog-single .blog-content {
     }
     .commentlist .comment__avatar {
         display: none;
+    }
+}
+
+/* ===================================================================
+ * # geospatial portfolio redesign
+ *
+ * ------------------------------------------------------------------- */
+
+.btn--small {
+    height: 4.2rem !important;
+    line-height: calc(4.2rem - .6rem) !important;
+    padding: 0 1.6rem !important;
+    letter-spacing: .15rem !important;
+    font-size: 1.05rem !important;
+}
+
+.home-content__main--geo {
+    display: flex;
+    align-items: center;
+    gap: 4.2rem;
+    padding-right: 60px;
+}
+
+.home-content__text {
+    flex: 1;
+    min-width: 0;
+}
+
+.home-content__profile {
+    flex: 0 0 220px;
+    text-align: center;
+}
+
+.home-content__profile img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.home-content__typing {
+    color: #FFFFFF;
+    font-family: "montserrat-semibold", sans-serif;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    margin-top: 2.1rem;
+    margin-bottom: 1.8rem;
+}
+
+.home-content__typed {
+    color: #c94040;
+}
+
+.home-content__summary {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.8rem;
+    max-width: 62rem;
+}
+
+.home-content__buttons--inline {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 2.4rem;
+}
+
+.home-content__buttons--inline .btn {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+}
+
+.about-skill-list {
+    margin-left: 1.2rem;
+}
+
+.about-skill-list li {
+    margin-bottom: 1.8rem;
+}
+
+.s-tech {
+    padding-top: 15rem;
+    padding-bottom: 12rem;
+    background-color: #f4f4f4;
+}
+
+.stack-grid {
+    margin-top: 4.2rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.4rem;
+}
+
+.stack-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    padding: 2.4rem;
+}
+
+.stack-card h4 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 1.9rem;
+}
+
+.stack-card__list {
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.stack-card__list li {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    min-height: 3.4rem;
+}
+
+.stack-card__list i {
+    color: #862121;
+    font-size: 2.2rem;
+}
+
+.stack-icon--custom {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: rgba(134, 33, 33, 0.15);
+    color: #862121;
+    font-family: "montserrat-bold", sans-serif;
+    font-size: .95rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.project-grid {
+    margin-top: 4.2rem;
+    row-gap: 3.2rem;
+}
+
+.project-card {
+    margin-bottom: 0;
+}
+
+.project-card__media img {
+    width: 100%;
+    height: 245px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.project-card__content {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 2.4rem;
+}
+
+.project-card__content h3 {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+}
+
+.project-card__content h3 a {
+    color: #0D0A0B;
+}
+
+.project-card__tags {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+}
+
+.project-card__tags span {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    padding: .3rem 1rem;
+    font-size: 1.2rem;
+    font-family: "montserrat-regular", sans-serif;
+}
+
+.project-card__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .9rem;
+}
+
+.project-card--featured .project-card__content {
+    border-color: rgba(134, 33, 33, 0.35);
+    box-shadow: 0 8px 30px rgba(134, 33, 33, 0.09);
+}
+
+.s-experience {
+    background-color: #FFFFFF;
+    padding-bottom: 12rem;
+}
+
+@media only screen and (max-width: 1200px) {
+    .home-content__main--geo {
+        gap: 3rem;
+    }
+    .home-content__profile {
+        flex-basis: 190px;
+    }
+    .home-content__profile img {
+        width: 190px;
+        height: 190px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .home-content__main--geo {
+        padding-right: 20px;
+    }
+    .home-content__typing {
+        font-size: 2rem;
+    }
+    .stack-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .home-content__main--geo {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    .home-content__profile {
+        flex-basis: auto;
+    }
+    .home-content__profile img {
+        width: 160px;
+        height: 160px;
+    }
+    .stack-card__list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .home-content__typing {
+        font-size: 1.8rem;
+    }
+    .home-content__summary {
+        font-size: 1.6rem;
+    }
+    .project-card__media img {
+        height: 220px;
     }
 }

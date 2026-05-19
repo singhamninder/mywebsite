@@ -3,6 +3,10 @@ from django.contrib import admin
 from .models import Info, Skill, Project, Tag, Publication, Work, Reference
 
 
+class InfoAdmin(admin.ModelAdmin):
+    fields = ("cv", "mainImage", "profile_image", "short_intro", "linkedin", "twitter")
+
+
 # Inline admin for References
 class ReferenceInline(admin.TabularInline):
     """
@@ -24,10 +28,10 @@ class ProjectAdmin(admin.ModelAdmin):
     """
 
     # Fields to display in the project list
-    list_display = ("title", "created", "get_reference_count")
+    list_display = ("title", "featured", "created", "get_reference_count")
 
     # Fields to filter by in the admin sidebar
-    list_filter = ("created", "tags")
+    list_filter = ("featured", "created", "tags")
 
     # Fields to search by
     search_fields = ("title", "description")
@@ -35,13 +39,17 @@ class ProjectAdmin(admin.ModelAdmin):
     # Fields to display when editing a project
     fields = (
         "title",
+        "impact_summary",
         "description",
         "featured_image",
         "image1",
         "image2",
         "image3",
+        "code_url",
+        "demo_url",
         "project_link",
         "publication_link",
+        "featured",
         "tags",
     )
 
@@ -59,7 +67,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 # Register all models
-admin.site.register(Info)
+admin.site.register(Info, InfoAdmin)
 admin.site.register(Skill)
 admin.site.register(Work)
 admin.site.register(Tag)

@@ -3,207 +3,251 @@
 <html class="no-js" lang="en">
 <head>
 
-    <!--- basic page needs
-    ================================================== -->
     <meta charset="utf-8">
     <title>Amninder Singh</title>
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <!-- mobile specific metas
-    ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS
-    ================================================== -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-    <!-- script
-    ================================================== -->
     <script src="{% static 'js/modernizr.js' %}"></script>
     <script src="{% static 'js/pace.min.js' %}"></script>
 
 </head>
 
 <body id="top">
-    <!-- header
-    ================================================== -->
     <header class="s-header">
-
-        <!-- <div class="header-logo">
-            <a class="site-logo" href=""><img src="" alt="Homepage"></a>
-        </div> -->
-
         <nav class="header-nav-wrap">
             <ul class="header-nav">
-                <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
-                <li><a class="smoothscroll"  href="#about" title="about">About</a></li>
-                <li><a class="smoothscroll"  href="#projects" title="projects">Projects</a></li>
-                <li><a class="smoothscroll"  href="#publications" title="publications">Publications</a></li>
-                <!--<li><a class="smoothscroll"  href="#contact" title="contact">Contact</a></li>-->
+                <li class="current"><a class="smoothscroll" href="#home" title="home">Home</a></li>
+                <li><a class="smoothscroll" href="#about" title="about">About</a></li>
+                <li><a class="smoothscroll" href="#tech-stack" title="tech-stack">Tech Stack</a></li>
+                <li><a class="smoothscroll" href="#projects" title="projects">Projects</a></li>
+                <li><a class="smoothscroll" href="#experience" title="experience">Experience</a></li>
+                <li><a class="smoothscroll" href="#publications" title="publications">Publications</a></li>
             </ul>
         </nav>
 
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+    </header>
 
-    </header> <!-- end s-header -->
-
-
-   <!-- home
-   ================================================== -->
 {% for info in infos %}
-   <section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="{{info.mainImage.url}}" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+    <section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="{{ info.mainImage.url }}" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+        <div class="overlay"></div>
+        <div class="shadow-overlay"></div>
 
-    <div class="overlay"></div>
-    <div class="shadow-overlay"></div>
+        <div class="home-content">
+            <div class="row home-content__main home-content__main--geo">
+                <div class="home-content__text">
+                    <h3>Data Scientist</h3>
+                    <h1>
+                        Amninder Singh
+                    </h1>
+                    <p class="home-content__typing">
+                        I build <span class="home-content__typed" data-phrases="{{ hero_rotating_phrases|join:'|' }}">geospatial ML pipelines</span>
+                    </p>
+                    <p class="home-content__summary">
+                        I design production-focused Earth observation and geospatial AI solutions for scalable remote sensing workflows.
+                    </p>
+                    <div class="home-content__buttons home-content__buttons--inline">
+                        <a href="#projects" class="smoothscroll btn btn--stroke">View Featured Projects</a>
+                        <a href="{{ info.cv.url }}" target="_blank" class="btn btn--stroke">Download CV</a>
+                    </div>
+                </div>
 
-    <div class="home-content">
+                <div class="home-content__profile">
+                    <img src="{{ info.profile_image.url }}" alt="Amninder Singh portrait">
+                </div>
 
-        <div class="row home-content__main">
-
-            <h3>Hello there, Thanks for stopping by!</h3>
-
-            <h1>
-                My name is Amninder Singh.<br/>
-                And I am a Data Scientist
-            </h1>
-
-             <div class="home-content__buttons">
-                <a href="#about" class="smoothscroll btn btn--stroke">
-                    More About Me
-                </a>
-                <a href="#projects" class="smoothscroll btn btn--stroke">
-                    Projects
-                </a>
+                <div class="home-content__scroll">
+                    <a href="#about" class="scroll-link smoothscroll">
+                        <span>Scroll Down</span>
+                    </a>
+                </div>
             </div>
-
-            <div class="home-content__scroll">
-                <a href="#about" class="scroll-link smoothscroll">
-                    <span>Scroll Down</span>
-                </a>
-            </div>
-
         </div>
 
-    </div> <!-- end home-content -->
-
-    <ul class="home-social">
-        <li>
-            <a href="{{info.linkedin}}" target="_blank"><i class="im im-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a>
-        </li>
-        <!-- <li>
-            <a href="{{info.twitter}}" target="_blank"><i class="im im-twitter" aria-hidden="true"></i><span>Twitter</span></a>
-        </li> -->
-        <li>
-            <a href="mailto:asing075@ucr.edu"><i class="im im-mail" aria-hidden="true"></i><span>Email</span></a>
-        </li>
-        <li>
-            <a href="https://github.com/singhamninder" target = "_blank"><i class="im im-github" aria-hidden="true"></i><span>GitHub</span></a>
-        </li>
-    </ul>
-
-
+        <ul class="home-social">
+            <li>
+                <a href="{{ info.linkedin }}" target="_blank"><i class="im im-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a>
+            </li>
+            <li>
+                <a href="mailto:amnindersingh13@gmail.com"><i class="im im-mail" aria-hidden="true"></i><span>Email</span></a>
+            </li>
+            <li>
+                <a href="https://github.com/singhamninder" target="_blank"><i class="im im-github" aria-hidden="true"></i><span>GitHub</span></a>
+            </li>
+        </ul>
     </section>
 
-    <!-- about
-    ================================================== -->
-
     <section id="about" class="s-about target-section">
-
         <div class="row narrow section-intro has-bottom-sep">
             <div class="col-full text-center">
                 <h3>About</h3>
-                <h1>More About Me</h1>
-                <p class="lead">{{info.short_intro}}</p>
+                <p class="lead">{{ info.short_intro }}</p>
             </div>
         </div>
 
-
         <div class="row about-content">
-
             <div class="col-six tab-full left">
                 <h3>Education</h3>
+                <div class="timeline__header">
+                    <p class="timeline__timeframe">2018 - 2021</p>
+                    <h5>University of California, Riverside</h5>
+                </div>
+                <div class="timeline__desc">
+                    <p>Ph.D., Environmental Sciences (Soil & Water)</p>
+                </div>
 
-                    <div class="timeline__header">
-                        <p class="timeline__timeframe">2018 - 2021</p>
-                        <h5>University of California, Riverside </h5>
-                    </div>
-                    <div class="timeline__desc">
-                        <p>Ph.D., Environmental Sciences (Soil &Water)</p>
-                    </div>
+                <div class="timeline__header">
+                    <p class="timeline__timeframe">2015 - 2017</p>
+                    <h5>California State University (CSU), Fresno</h5>
+                </div>
+                <div class="timeline__desc">
+                    <p>MS, Plant Science</p>
+                </div>
 
-                    <div class="timeline__header">
-                        <p class="timeline__timeframe">2015 - 2017</p>
-                        <h5>California State University (CSU), Fresno</h5>
-                    </div>
-                    <div class="timeline__desc">
-                        <p>MS, Plant Science</p>
-                    </div>
-
-                    <div class="timeline__header">
-                        <p class="timeline__timeframe">2011 - 2015</p>
-                        <h5>Punjab Agricultural University, India</h5>
-                    </div>
-                    <div class="timeline__desc">
-                        <p>BS, Agriculture</p>
-                    </div>
+                <div class="timeline__header">
+                    <p class="timeline__timeframe">2011 - 2015</p>
+                    <h5>Punjab Agricultural University, India</h5>
+                </div>
+                <div class="timeline__desc">
+                    <p>BS, Agriculture</p>
+                </div>
             </div>
 
-
             <div class="col-six tab-full right">
-                <h3>Skills</h3>
-                {%for skill in skills %}
+                <h3>Core Capabilities</h3>
+                <ul class="about-skill-list">
+                    {% for skill in skills %}
                     <li>
-                    <strong>{{skill.name}}</strong>
-                    <p>{{skill.description}}</p>
+                        <strong>{{ skill.name }}</strong>
+                        <p>{{ skill.description }}</p>
                     </li>
-                {% endfor %}
+                    {% endfor %}
+                </ul>
 
                 <p class="blog-content__tags">
                     <span>Other Skills</span>
                     {% for skill in otherskills %}
                     <span class="blog-content__tag-list">
-                        <a>{{skill}}</a>
+                        <a>{{ skill }}</a>
                     </span>
                     {% endfor %}
                 </p>
-
             </div>
+        </div>
+    </section>
 
-        </div> <!-- end about-content -->
-
-        <div class="row about-content about-content--buttons">
-
-            <div class="col-six tab-full left">
-                <a href="{{info.cv.url}}" target="_blank" class="btn btn--primary full-width">Download My CV</a>
+    <section id="tech-stack" class="s-tech target-section">
+        <div class="row narrow section-intro has-bottom-sep">
+            <div class="col-full">
+                <h3>Tech Stack</h3>
             </div>
+        </div>
 
+        <div class="row">
+            <div class="col-full">
+                <div class="stack-grid">
+                    {% for group in tech_stack_groups %}
+                    <article class="stack-card">
+                        <h4>{{ group.name }}</h4>
+                        <ul class="stack-card__list">
+                            {% for item in group.items %}
+                            <li>
+                                {% if item.icon|slice:":7" == "custom-" %}
+                                <span class="stack-icon stack-icon--custom">{{ item.label }}</span>
+                                {% else %}
+                                <i class="{{ item.icon }}" aria-hidden="true"></i>
+                                {% endif %}
+                                <span>{{ item.name }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
 
-        </div> <!-- end about-content buttons -->
+    <section id="projects" class="s-works target-section">
+        <div class="row narrow section-intro has-bottom-sep">
+            <div class="col-full">
+                <h3>Featured Projects</h3>
+            </div>
+        </div>
 
+        <div class="row project-grid">
+            {% for project in featured_projects %}
+            <article class="col-six tab-full project-card {% if forloop.first %}project-card--featured{% endif %}">
+                <div class="project-card__media">
+                    <a href="{% url 'project' project.id %}">
+                        <img src="{{ project.featured_image.url }}" alt="{{ project.title }}">
+                    </a>
+                </div>
+                <div class="project-card__content">
+                    <h3><a href="{% url 'project' project.id %}">{{ project.title }}</a></h3>
+                    <p>
+                        {% if project.impact_summary %}
+                            {{ project.impact_summary }}
+                        {% else %}
+                            {{ project.description|truncatechars:180 }}
+                        {% endif %}
+                    </p>
+
+                    <div class="project-card__tags">
+                        {% for tag in project.tags.all %}
+                        <span>{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="project-card__links">
+                        {% if project.code_url %}
+                        <a href="{{ project.code_url }}" target="_blank" class="btn btn--stroke btn--small">Code</a>
+                        {% elif project.project_link %}
+                        <a href="{{ project.project_link }}" target="_blank" class="btn btn--stroke btn--small">Code</a>
+                        {% endif %}
+
+                        {% if project.demo_url %}
+                        <a href="{{ project.demo_url }}" target="_blank" class="btn btn--primary btn--small">Demo</a>
+                        {% elif project.publication_link %}
+                        <a href="{{ project.publication_link }}" target="_blank" class="btn btn--primary btn--small">Demo</a>
+                        {% endif %}
+
+                        <a href="{% url 'project' project.id %}" class="btn btn--stroke btn--small">Details</a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="experience" class="s-about target-section s-experience">
+        <div class="row narrow section-intro has-bottom-sep">
+            <div class="col-full text-center">
+                <h3>Experience</h3>
+            </div>
+        </div>
 
         <div class="row about-content about-content--timeline">
-
-            <div class="col-full text-center">
-                <h3>Work Experience.</h3>
-            </div>
-
-
             <div class="col-six tab-full left">
                 <div class="timeline">
                     {% for work in lworks %}
                     <div class="timeline__block">
                         <div class="timeline__bullet"></div>
                         <div class="timeline__header">
-                            <p class="timeline__timeframe">{{work.startdate}} - {{work.enddate}}</p>
-                            <h3>{{work.place}}</h3>
-                            <h5>{{work.title}}</h5>
+                            <p class="timeline__timeframe">{{ work.startdate }} - {{ work.enddate }}</p>
+                            <h3>{{ work.place }}</h3>
+                            <h5>{{ work.title }}</h5>
                         </div>
                         {% if work.description %}
                         <div class="timeline__desc">
-                            <p>{{work.description}}</p>
+                            <p>{{ work.description }}</p>
                         </div>
                         {% endif %}
                     </div>
@@ -217,77 +261,23 @@
                     <div class="timeline__block">
                         <div class="timeline__bullet"></div>
                         <div class="timeline__header">
-                            <p class="timeline__timeframe">{{work.startdate}} - {{work.enddate}}</p>
-                            <h3>{{work.place}}</h3>
-                            <h5>{{work.title}}</h5>
+                            <p class="timeline__timeframe">{{ work.startdate }} - {{ work.enddate }}</p>
+                            <h3>{{ work.place }}</h3>
+                            <h5>{{ work.title }}</h5>
                         </div>
                         {% if work.description %}
                         <div class="timeline__desc">
-                            <p>{{work.description}}</p>
+                            <p>{{ work.description }}</p>
                         </div>
                         {% endif %}
                     </div>
                     {% endfor %}
                 </div>
             </div>
-
-        </div>
-    </section> <!-- end about -->
-
-    <!-- projects
-    ================================================== -->
-    <section id="projects" class="s-works target-section">
-
-        <div class="row narrow section-intro has-bottom-sep">
-            <div class="col-full">
-                <h3>Projects</h3>
-            </div>
-        </div>
-
-        <div class="row masonry-wrap">
-            <div class="masonry">
-
-                {% for project in projects %}
-                <div class="masonry__brick">
-                    <div class="item-folio">
-                        <div class="item-folio__thumb">
-                            <a href="{% url 'project' project.id %}" class="thumb-link" data-size="1050x700">
-                                <img src="{{project.featured_image.url}}"
-                                style="min-height: 300px;
-                                max-height: 300px;">
-                                <span class="shadow-overlay"></span>
-                            </a>
-                        </div>
-
-                        <div class="item-folio__text">
-                            <h3 class="item-folio__title">
-                                {{project.title}}
-                            </h3>
-                        </div>
-
-                        {% if project.project_link %}
-                        <a href="{{project.project_link}}" target="_blank" class="item-folio__project-link" title="Project link">
-                            <i class="im im-link"></i>
-                        </a>
-                        {% elif project.publication_link%}
-                        <a href="{{project.publication_link}}" target="_blank" class="item-folio__project-link" title="Publication link">
-                            <i class="im im-link"></i>
-                        </a>
-                        {% endif %}
-
-                    </div>
-                </div>
-                {% endfor %}
-
-            </div>
         </div>
     </section>
 
-
-    <!-- publications
-    ================================================== -->
     <section id="publications" class="s-blog target-section">
-
         <div class="row narrow section-intro has-bottom-sep">
             <div class="col-full">
                 <h3>Publications</h3>
@@ -296,82 +286,55 @@
 
         {% for publication in publications %}
         <div class="row blog-content">
-                    <article class="col-block">
-                            <p><a href={{publication.link}} target="_blank" style="color: black">{{publication.title}}</a></p>
-
-                    </article>
+            <article class="col-block">
+                <p><a href="{{ publication.link }}" target="_blank" style="color: black">{{ publication.title }}</a></p>
+            </article>
         </div>
         {% endfor %}
     </section>
 
-
     {% include "contact.html" %}
 
-    <!-- footer
-    ================================================== -->
-
     <footer>
-
         <div class="row">
             <div class="col-full">
-
                 <ul class="footer-social">
-
-                    <li><a href="{{info.linkedin}}" target="_blank">
+                    <li><a href="{{ info.linkedin }}" target="_blank">
                         <i class="im im-linkedin" aria-hidden="true"></i>
                         <span>LinkedIn</span>
                     </a></li>
 
-                    <!-- <li><a href="{{info.twitter}}" target="_blank">
-                        <i class="im im-twitter" aria-hidden="true"></i>
-                        <span>Twitter</span>
-                    </a></li> -->
-
-                    <li><a href="mailto:asing075@ucr.edu">
+                    <li><a href="mailto:amnindersingh13@gmail.com">
                         <i class="im im-mail" aria-hidden="true"></i>
                         <span>Email</span>
                     </a></li>
 
-                    <li><a href="https://github.com/singhamninder" target = "_blank">
+                    <li><a href="https://github.com/singhamninder" target="_blank">
                     <i class="im im-github" aria-hidden="true"></i>
                     <span>GitHub</span>
                     </a></li>
-
                 </ul>
-
             </div>
         </div>
 
-
         <div class="row footer-bottom">
-
             <div class="col-twelve">
                 <div class="copyright">
-                    <span>© Amninder Singh 2021-2025</span>
+                    <span>© Amninder Singh 2021&ndash;{% now "Y" %}</span>
                     <span>Design: <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
                 </div>
 
                 <div class="go-top">
                     <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
-                    </div>
+                </div>
             </div>
-
-        </div> <!-- end footer-bottom -->
-
-    </footer> <!-- end footer -->
-
+        </div>
+    </footer>
 {% endfor %}
-    <!-- Java Script
-    ================================================== -->
+
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/plugins.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
 
-
-
 </body>
-
 </html>
-
-
-
