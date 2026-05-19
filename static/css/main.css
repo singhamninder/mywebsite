@@ -2960,7 +2960,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .stats__col--highlight {
-    background: #111111 url("../images/count-bg.jpg");
+    background: #111111;
     background-size: 175px 175px;
     position: relative;
 }

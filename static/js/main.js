@@ -501,7 +501,6 @@
         safeInit('ssMoveHeader', ssMoveHeader);
         safeInit('ssMobileMenu', ssMobileMenu);
         safeInit('ssMasonryFolio', ssMasonryFolio);
-        safeInit('ssPhotoswipe', ssPhotoswipe);
         safeInit('ssSlickSlider', ssSlickSlider);
         safeInit('ssWaypoints', ssWaypoints);
         safeInit('ssStatCount', ssStatCount);
