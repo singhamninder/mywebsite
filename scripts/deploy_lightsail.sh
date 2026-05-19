@@ -18,6 +18,15 @@ SERVICE_NAME="${3:?SERVICE_NAME argument is required}"
 
 log() { echo "[deploy $(date -u +%H:%M:%SZ)] $*"; }
 
+# Non-interactive SSH sessions often omit user-local bin directories.
+export PATH="$HOME/.local/bin:$PATH"
+
+if ! command -v uv >/dev/null 2>&1; then
+    log "ERROR: uv is not available in PATH: $PATH"
+    log "Install uv or expose it via ~/.local/bin before deploying."
+    exit 127
+fi
+
 log "Starting deploy of ${COMMIT_SHA}"
 log "App dir: ${APP_DIR} | Service: ${SERVICE_NAME}"
 

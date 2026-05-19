@@ -40,6 +40,24 @@ jobs:
           echo "${{ secrets.LIGHTSAIL_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
+      - name: Remote preflight (PATH and uv)
+        env:
+          LIGHTSAIL_USER: ${{ secrets.LIGHTSAIL_USER }}
+          LIGHTSAIL_HOST: ${{ secrets.LIGHTSAIL_HOST }}
+        run: |
+          ssh -i ~/.ssh/deploy_key \
+            -o StrictHostKeyChecking=yes \
+            -o BatchMode=yes \
+            "${LIGHTSAIL_USER}@${LIGHTSAIL_HOST}" \
+            'bash -s' <<'EOF'
+          echo "Remote PATH: $PATH"
+          echo -n "uv in PATH: "
+          command -v uv || true
+          echo -n "uv in ~/.local/bin: "
+          command -v "$HOME/.local/bin/uv" || true
+          "$HOME/.local/bin/uv" --version || true
+          EOF
+
       - name: Run deploy script on server
         env:
           LIGHTSAIL_USER: ${{ secrets.LIGHTSAIL_USER }}
