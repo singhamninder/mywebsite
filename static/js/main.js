@@ -412,6 +412,49 @@
         });
     };
 
+    /* Rotating Hero Text
+     * ------------------------------------------------------ */
+    var ssRotatingText = function() {
+        var typedElement = $('.home-content__typed');
+
+        if (!typedElement.length) return;
+
+        var phrases = (typedElement.data('phrases') || '').split('|').filter(Boolean);
+        if (!phrases.length) return;
+
+        var phraseIndex = 0;
+        var charIndex = 0;
+        var deleting = false;
+        var pauseMs = 1300;
+        var typeSpeed = 70;
+        var deleteSpeed = 35;
+
+        var animate = function() {
+            var currentPhrase = phrases[phraseIndex];
+
+            if (!deleting) {
+                charIndex += 1;
+                typedElement.text(currentPhrase.substring(0, charIndex));
+                if (charIndex === currentPhrase.length) {
+                    deleting = true;
+                    return window.setTimeout(animate, pauseMs);
+                }
+                return window.setTimeout(animate, typeSpeed);
+            }
+
+            charIndex -= 1;
+            typedElement.text(currentPhrase.substring(0, charIndex));
+            if (charIndex === 0) {
+                deleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                return window.setTimeout(animate, 220);
+            }
+            return window.setTimeout(animate, deleteSpeed);
+        };
+
+        animate();
+    };
+
 
    /* Initialize
     * ------------------------------------------------------ */
@@ -429,8 +472,8 @@
         ssSmoothScroll();
         ssPlaceholder();
         ssAlertBoxes();
-        ssContactForm();
         ssBackToTop();
+        ssRotatingText();
 
     })();
 

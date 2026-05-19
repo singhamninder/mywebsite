@@ -101,6 +101,21 @@
                     {% endfor %}
                 </p>
 
+                <p class="blog-content__tags">
+                    <span>Project Links</span>
+                    {% if project.code_url %}
+                    <span class="blog-content__tag-list"><a href="{{ project.code_url }}" target="_blank">Code</a></span>
+                    {% elif project.project_link %}
+                    <span class="blog-content__tag-list"><a href="{{ project.project_link }}" target="_blank">Code</a></span>
+                    {% endif %}
+
+                    {% if project.demo_url %}
+                    <span class="blog-content__tag-list"><a href="{{ project.demo_url }}" target="_blank">Demo</a></span>
+                    {% elif project.publication_link %}
+                    <span class="blog-content__tag-list"><a href="{{ project.publication_link }}" target="_blank">Demo</a></span>
+                    {% endif %}
+                </p>
+
             </div><!-- end blog-content__main -->
 
             <!-- Add after the project description or wherever you want references to appear -->
@@ -188,7 +203,7 @@
                         <span>Github</span>
                     </a></li>
 
-                    <li><a href="mailto:asing075@ucr.edu">
+                    <li><a href="mailto:amnindersingh13@gmail.com">
                         <i class="im im-mail" aria-hidden="true"></i>
                         <span>Email</span>
                     </a></li>
@@ -202,7 +217,7 @@
 
             <div class="col-twelve">
                 <div class="copyright">
-                    <span>© Amninder Singh 2021-2025</span>
+                    <span>© Amninder Singh 2021&ndash;{% now "Y" %}</span>
                     <span>Design: <a href="https://www.styleshout.com/">styleshout</a></span>
                 </div>
 
