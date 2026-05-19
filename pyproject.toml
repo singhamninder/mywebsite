@@ -42,3 +42,4 @@ ignore = ["E501", "I001"]
 "home/tests.py" = ["F401"]
 
 [tool.ty]
+rules.unresolved-attribute = "ignore"

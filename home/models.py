@@ -1,8 +1,5 @@
 from django.db import models
 
-# from captcha.fields import ReCaptchaField
-# from captcha.widgets import ReCaptchaV2Checkbox
-
 
 class Info(models.Model):
     cv = models.FileField()
@@ -113,4 +110,5 @@ class Reference(models.Model):
         ordering = ["created"]
 
     def __str__(self):
-        return f"{self.title[:50]}... - {self.project.title}"
+        title = str(self.title)
+        return f"{title[:50]}... - {self.project.title}"
