@@ -19,6 +19,16 @@
     var doc = document.documentElement;
     doc.setAttribute('data-useragent', navigator.userAgent);
 
+    var safeInit = function(name, initializer) {
+        try {
+            initializer();
+        } catch (error) {
+            if (window.console && console.error) {
+                console.error('Init failed for ' + name, error);
+            }
+        }
+    };
+
 
     /* Preloader
      * -------------------------------------------------- */
@@ -455,25 +465,51 @@
         animate();
     };
 
+    /* Icon Fallback Detection
+     * ------------------------------------------------------ */
+    var ssDetectDeviconSupport = function() {
+        var hasDeviconStylesheet = Array.prototype.some.call(document.styleSheets, function(stylesheet) {
+            return stylesheet.href && stylesheet.href.indexOf('devicon') !== -1;
+        });
+
+        if (!hasDeviconStylesheet) {
+            doc.classList.add('no-devicon');
+            return;
+        }
+
+        var probe = document.createElement('i');
+        probe.className = 'devicon-python-plain';
+        probe.style.position = 'absolute';
+        probe.style.opacity = '0';
+        document.body.appendChild(probe);
+
+        var iconContent = window.getComputedStyle(probe, ':before').getPropertyValue('content');
+        document.body.removeChild(probe);
+
+        if (!iconContent || iconContent === 'none' || iconContent === 'normal' || iconContent === '""') {
+            doc.classList.add('no-devicon');
+        }
+    };
+
 
    /* Initialize
     * ------------------------------------------------------ */
     (function ssInit() {
-
-        ssPreloader();
-        ssPrettyPrint();
-        ssMoveHeader();
-        ssMobileMenu();
-        ssMasonryFolio();
-        ssPhotoswipe();
-        ssSlickSlider();
-        ssWaypoints();
-        ssStatCount();
-        ssSmoothScroll();
-        ssPlaceholder();
-        ssAlertBoxes();
-        ssBackToTop();
-        ssRotatingText();
+        safeInit('ssDetectDeviconSupport', ssDetectDeviconSupport);
+        safeInit('ssPreloader', ssPreloader);
+        safeInit('ssPrettyPrint', ssPrettyPrint);
+        safeInit('ssMoveHeader', ssMoveHeader);
+        safeInit('ssMobileMenu', ssMobileMenu);
+        safeInit('ssMasonryFolio', ssMasonryFolio);
+        safeInit('ssPhotoswipe', ssPhotoswipe);
+        safeInit('ssSlickSlider', ssSlickSlider);
+        safeInit('ssWaypoints', ssWaypoints);
+        safeInit('ssStatCount', ssStatCount);
+        safeInit('ssSmoothScroll', ssSmoothScroll);
+        safeInit('ssPlaceholder', ssPlaceholder);
+        safeInit('ssAlertBoxes', ssAlertBoxes);
+        safeInit('ssBackToTop', ssBackToTop);
+        safeInit('ssRotatingText', ssRotatingText);
 
     })();
 

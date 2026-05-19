@@ -162,7 +162,16 @@
                                 {% if item.icon|slice:":7" == "custom-" %}
                                 <span class="stack-icon stack-icon--custom">{{ item.label }}</span>
                                 {% else %}
-                                <i class="{{ item.icon }}" aria-hidden="true"></i>
+                                <span class="stack-icon-wrap">
+                                    <i class="{{ item.icon }}" aria-hidden="true"></i>
+                                    <span class="stack-icon stack-icon--fallback">
+                                        {% if item.label %}
+                                            {{ item.label }}
+                                        {% else %}
+                                            {{ item.name|slice:":3" }}
+                                        {% endif %}
+                                    </span>
+                                </span>
                                 {% endif %}
                                 <span>{{ item.name }}</span>
                             </li>
