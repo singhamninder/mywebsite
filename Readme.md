@@ -80,11 +80,6 @@ The workflow runs:
 - `uv run python manage.py makemigrations --check --dry-run`
 - `uv run python manage.py test`
 
-### Branch protection (recommended)
-
-In GitHub repository settings, set branch protection for `main` and require the CI check
-named **Quality and integrity checks** before merge. This blocks merges when any required
-lint, type, Django integrity, or test check is failing.
 
 ---
 
