@@ -99,9 +99,7 @@ class Contact(models.Model):
 
 # This model allows you to add references to each project, with a title and URL.
 class Reference(models.Model):
-    project = models.ForeignKey(
-        "Project", on_delete=models.CASCADE, related_name="references"
-    )
+    project = models.ForeignKey("Project", on_delete=models.CASCADE, related_name="references")
     title = models.CharField(max_length=500)
     url = models.URLField(max_length=2000)
     created = models.DateTimeField(auto_now_add=True)
