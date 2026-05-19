@@ -88,6 +88,22 @@ lint, type, Django integrity, or test check is failing.
 
 ---
 
+## CD (Automated Deployment to Lightsail)
+
+Production deployment is handled by `.github/workflows/deploy.yml` using SSH to the existing
+AWS Lightsail server (Nginx + Gunicorn + systemd). Deploys trigger on push to `main` and can
+also be run manually with `workflow_dispatch`.
+
+The workflow runs `scripts/deploy_lightsail.sh` remotely to:
+
+- deploy the target commit SHA
+- run `uv sync --locked --no-dev`
+- run Django checks/migrations/static collection
+- restart Gunicorn only after successful update steps
+- verify site availability with a smoke check for `https://amnindersahota.com`
+
+---
+
 ## Compatibility Note
 
 - `uv.lock` is the source of truth for dependency resolution.

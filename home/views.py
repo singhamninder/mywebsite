@@ -23,11 +23,13 @@ TECH_STACK_GROUPS = [
         "items": [
             {"name": "Google Earth Engine", "icon": "custom-gee", "label": "GEE"},
             {"name": "Apache Sedona", "icon": "custom-sedona", "label": "Sedona"},
-            {"name": "Rasterio / Xarray", "icon": "devicon-python-plain"},
-            {"name": "GeoPandas", "icon": "devicon-python-plain"},
+            {
+                "name": "Rasterio, Xarray, GeoPandas, Shapely",
+                "icon": "devicon-python-plain",
+            },
             {"name": "QGIS", "icon": "custom-qgis", "label": "QGIS"},
             {
-                "name": "Sentinel / Landsat / SAR",
+                "name": "Sentinel, Landsat, SAR",
                 "icon": "custom-satellite",
                 "label": "EO",
             },
@@ -36,9 +38,7 @@ TECH_STACK_GROUPS = [
     {
         "name": "Machine Learning / Data",
         "items": [
-            {"name": "Python", "icon": "devicon-python-plain"},
-            {"name": "Pandas", "icon": "devicon-python-plain"},
-            {"name": "NumPy", "icon": "devicon-python-plain"},
+            {"name": "Python - Pandas, Numpy", "icon": "devicon-python-plain"},
             {"name": "scikit-learn", "icon": "devicon-scikitlearn-plain"},
             {"name": "PyTorch", "icon": "devicon-pytorch-original"},
             {"name": "TensorFlow", "icon": "devicon-tensorflow-original"},
@@ -47,9 +47,14 @@ TECH_STACK_GROUPS = [
     {
         "name": "Cloud / MLOps",
         "items": [
-            {"name": "Vertex AI", "icon": "custom-vertex", "label": "Vertex"},
-            {"name": "Google Cloud", "icon": "devicon-googlecloud-plain"},
-            {"name": "AWS", "icon": "devicon-amazonwebservices-plain-wordmark"},
+            {
+                "name": "Google Cloud - Vertex AI, Cloud Run, Cloud Storage",
+                "icon": "devicon-googlecloud-plain",
+            },
+            {
+                "name": "AWS - S3, Lambda, Sagemaker",
+                "icon": "devicon-amazonwebservices-plain-wordmark",
+            },
             {"name": "Docker", "icon": "devicon-docker-plain"},
             {"name": "GitHub Actions", "icon": "devicon-githubactions-plain"},
             {"name": "Git", "icon": "devicon-git-plain"},
