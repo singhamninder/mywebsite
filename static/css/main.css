@@ -4254,48 +4254,63 @@ article.blog-single .blog-content {
 .stack-card__list li {
     display: flex;
     align-items: center;
-    gap: .9rem;
-    min-height: 3.4rem;
-}
-
-.stack-card__list i {
-    color: #862121;
-    font-size: 2.2rem;
+    gap: 1.1rem;
+    min-height: 4rem;
 }
 
 .stack-icon-wrap {
-    width: 2.4rem;
-    min-width: 2.4rem;
-    height: 2.4rem;
+    width: 3rem;
+    min-width: 3rem;
+    height: 3rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+.stack-icon-wrap img,
+.stack-icon-wrap i {
+    width: 2.45rem;
+    height: 2.45rem;
+}
+
+.stack-icon-wrap img {
+    object-fit: contain;
+}
+
+.stack-icon-wrap i {
+    color: inherit;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.stack-item__name {
+    line-height: 1.4;
+    font-size: 1.62rem;
 }
 
 .stack-icon--fallback {
     display: none;
+    width: 2.45rem;
+    height: 2.45rem;
+    align-items: center;
+    justify-content: center;
+    color: #4b4b4b;
+    font-family: "montserrat-bold", sans-serif;
+    font-size: .82rem;
+    text-transform: uppercase;
+    letter-spacing: .01em;
 }
 
-html.no-devicon .stack-card__list i {
+.stack-icon--fallback-visible {
+    display: inline-flex;
+}
+
+html.no-devicon .stack-item--devicon .stack-icon-wrap i {
     display: none;
 }
 
-html.no-devicon .stack-icon--fallback {
+html.no-devicon .stack-item--devicon .stack-icon--fallback {
     display: inline-flex;
-}
-
-.stack-icon--custom {
-    width: 2.4rem;
-    height: 2.4rem;
-    border-radius: 50%;
-    background: rgba(134, 33, 33, 0.15);
-    color: #862121;
-    font-family: "montserrat-bold", sans-serif;
-    font-size: .95rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
 }
 
 .project-grid {

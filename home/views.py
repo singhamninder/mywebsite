@@ -21,16 +21,28 @@ TECH_STACK_GROUPS = [
     {
         "name": "Geospatial / Remote Sensing",
         "items": [
-            {"name": "Google Earth Engine", "icon": "custom-gee", "label": "GEE"},
-            {"name": "Apache Sedona", "icon": "custom-sedona", "label": "Sedona"},
+            {
+                "name": "Google Earth Engine",
+                "icon_svg": "https://cdn.simpleicons.org/googleearthengine/4285F4",
+                "label": "GEE",
+            },
+            {
+                "name": "Apache Sedona",
+                "icon_svg": "https://cdn.simpleicons.org/apache/D22128",
+                "label": "Sedona",
+            },
             {
                 "name": "Rasterio, Xarray, GeoPandas, Shapely",
-                "icon": "devicon-python-plain",
+                "icon_svg": "https://cdn.simpleicons.org/python/3776AB",
+                "label": "Py",
             },
-            {"name": "QGIS", "icon": "custom-qgis", "label": "QGIS"},
+            {
+                "name": "QGIS",
+                "icon_svg": "https://cdn.simpleicons.org/qgis/589632",
+                "label": "QGIS",
+            },
             {
                 "name": "Sentinel, Landsat, SAR",
-                "icon": "custom-satellite",
                 "label": "EO",
             },
         ],
@@ -38,10 +50,26 @@ TECH_STACK_GROUPS = [
     {
         "name": "Machine Learning / Data",
         "items": [
-            {"name": "Python - Pandas, Numpy", "icon": "devicon-python-plain"},
-            {"name": "scikit-learn", "icon": "devicon-scikitlearn-plain"},
-            {"name": "PyTorch", "icon": "devicon-pytorch-original"},
-            {"name": "TensorFlow", "icon": "devicon-tensorflow-original"},
+            {
+                "name": "Python - Pandas, Numpy",
+                "icon_svg": "https://cdn.simpleicons.org/python/3776AB",
+                "label": "Py",
+            },
+            {
+                "name": "scikit-learn",
+                "icon_svg": "https://cdn.simpleicons.org/scikitlearn/F7931E",
+                "label": "SK",
+            },
+            {
+                "name": "PyTorch",
+                "icon_svg": "https://cdn.simpleicons.org/pytorch/EE4C2C",
+                "label": "PT",
+            },
+            {
+                "name": "TensorFlow",
+                "icon_svg": "https://cdn.simpleicons.org/tensorflow/FF6F00",
+                "label": "TF",
+            },
         ],
     },
     {
@@ -49,23 +77,55 @@ TECH_STACK_GROUPS = [
         "items": [
             {
                 "name": "Google Cloud - Vertex AI, Cloud Run, Cloud Storage",
-                "icon": "devicon-googlecloud-plain",
+                "icon_svg": "https://cdn.simpleicons.org/googlecloud/4285F4",
+                "label": "GCP",
             },
             {
                 "name": "AWS - S3, Lambda, Sagemaker",
-                "icon": "devicon-amazonwebservices-plain-wordmark",
+                "icon_svg": "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+                "label": "AWS",
             },
-            {"name": "Docker", "icon": "devicon-docker-plain"},
-            {"name": "GitHub Actions", "icon": "devicon-githubactions-plain"},
-            {"name": "Git", "icon": "devicon-git-plain"},
+            {
+                "name": "Apache Airflow",
+                "icon_svg": "https://cdn.simpleicons.org/apacheairflow/017CEE",
+                "label": "Airflow",
+            },
+            {
+                "name": "MLflow",
+                "icon_svg": "https://cdn.simpleicons.org/mlflow/0194E2",
+                "label": "MLflow",
+            },
+            {
+                "name": "Docker",
+                "icon_svg": "https://cdn.simpleicons.org/docker/2496ED",
+                "label": "DKR",
+            },
+            {
+                "name": "GitHub Actions",
+                "icon_svg": "https://cdn.simpleicons.org/githubactions/2088FF",
+                "label": "GHA",
+            },
+            {"name": "Git", "icon_svg": "https://cdn.simpleicons.org/git/F05032", "label": "Git"},
         ],
     },
     {
         "name": "App / Web / Deployment",
         "items": [
-            {"name": "Streamlit", "icon": "devicon-streamlit-plain"},
-            {"name": "Django", "icon": "devicon-django-plain"},
-            {"name": "FastAPI", "icon": "devicon-fastapi-plain"},
+            {
+                "name": "Streamlit",
+                "icon_svg": "https://cdn.simpleicons.org/streamlit/FF4B4B",
+                "label": "ST",
+            },
+            {
+                "name": "Django",
+                "icon_svg": "https://cdn.simpleicons.org/django/092E20",
+                "label": "DJ",
+            },
+            {
+                "name": "FastAPI",
+                "icon_svg": "https://cdn.simpleicons.org/fastapi/009688",
+                "label": "FA",
+            },
         ],
     },
 ]
