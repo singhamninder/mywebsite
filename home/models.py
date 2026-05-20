@@ -47,8 +47,6 @@ class Project(models.Model):
     image3 = models.ImageField(null=True, blank=True, default="default.jpg")
     code_url = models.URLField(max_length=2000, null=True, blank=True)
     demo_url = models.URLField(max_length=2000, null=True, blank=True)
-    project_link = models.TextField(max_length=500, null=True, blank=True)
-    publication_link = models.TextField(max_length=2000, null=True, blank=True)
     featured = models.BooleanField(default=False)
     tags = models.ManyToManyField("Tag", blank=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -97,15 +95,21 @@ class Contact(models.Model):
         ordering = ["is_read", "-created"]
 
 
-# This model allows you to add references to each project, with a title and URL.
-class Reference(models.Model):
-    project = models.ForeignKey("Project", on_delete=models.CASCADE, related_name="references")
+# This model allows you to add related publications to each project.
+class RelatedPublication(models.Model):
+    project = models.ForeignKey(
+        "Project",
+        on_delete=models.CASCADE,
+        related_name="related_publications",
+    )
     title = models.CharField(max_length=500)
     url = models.URLField(max_length=2000)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ["created"]
+        verbose_name = "Related publication"
+        verbose_name_plural = "Related publications"
 
     def __str__(self):
         title = str(self.title)

@@ -1,34 +1,34 @@
 from django.contrib import admin
 
-from .models import Info, Skill, Project, Tag, Publication, Work, Reference
+from .models import Info, Skill, Project, Tag, Publication, Work, RelatedPublication
 
 
 class InfoAdmin(admin.ModelAdmin):
     fields = ("cv", "mainImage", "profile_image", "short_intro", "linkedin", "twitter")
 
 
-# Inline admin for References
-class ReferenceInline(admin.TabularInline):
+# Inline admin for related publications
+class RelatedPublicationInline(admin.TabularInline):
     """
-    Allows editing references directly from the Project admin page.
-    TabularInline displays references in a compact table format.
+    Allows editing related publications directly from the Project admin page.
+    TabularInline displays related publications in a compact table format.
     """
 
-    model = Reference
-    extra = 1  # Show 1 empty reference form by default
+    model = RelatedPublication
+    extra = 1  # Show 1 empty related publication form by default
     fields = ("title", "url")
-    verbose_name = "Reference"
-    verbose_name_plural = "References"
+    verbose_name = "Related publication"
+    verbose_name_plural = "Related publications"
 
 
-# Updated Project admin with References inline
+# Updated Project admin with related publications inline
 class ProjectAdmin(admin.ModelAdmin):
     """
-    Enhanced Project admin with inline References management
+    Enhanced Project admin with inline related publications management
     """
 
     # Fields to display in the project list
-    list_display = ("title", "featured", "created", "get_reference_count")
+    list_display = ("title", "featured", "created", "get_related_publication_count")
 
     # Fields to filter by in the admin sidebar
     list_filter = ("featured", "created", "tags")
@@ -47,8 +47,6 @@ class ProjectAdmin(admin.ModelAdmin):
         "image3",
         "code_url",
         "demo_url",
-        "project_link",
-        "publication_link",
         "featured",
         "tags",
     )
@@ -56,14 +54,14 @@ class ProjectAdmin(admin.ModelAdmin):
     # Allow multiple selection for tags
     filter_horizontal = ("tags",)
 
-    # Include the References inline
-    inlines = [ReferenceInline]
+    # Include the related publications inline
+    inlines = [RelatedPublicationInline]
 
-    def get_reference_count(self, obj):
-        """Display the number of references for each project in the list view"""
-        return obj.references.count()
+    def get_related_publication_count(self, obj):
+        """Display the number of related publications for each project in the list view."""
+        return obj.related_publications.count()
 
-    get_reference_count.short_description = "References"
+    get_related_publication_count.short_description = "Related publications"
 
 
 # Register all models
@@ -73,5 +71,5 @@ admin.site.register(Work)
 admin.site.register(Tag)
 admin.site.register(Publication)
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(Reference)
+admin.site.register(RelatedPublication)
 # admin.site.register(Contact)
