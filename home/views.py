@@ -28,7 +28,7 @@ TECH_STACK_GROUPS = [
             },
             {
                 "name": "Apache Sedona",
-                "icon_svg": "https://cdn.simpleicons.org/apache/D22128",
+                "icon_svg": "https://www.apache.org/logos/originals/sedona-2.svg",
                 "label": "Sedona",
             },
             {
@@ -105,7 +105,11 @@ TECH_STACK_GROUPS = [
                 "icon_svg": "https://cdn.simpleicons.org/githubactions/2088FF",
                 "label": "GHA",
             },
-            {"name": "Git", "icon_svg": "https://cdn.simpleicons.org/git/F05032", "label": "Git"},
+            {
+                "name": "Git",
+                "icon_svg": "https://cdn.simpleicons.org/git/F05032",
+                "label": "Git",
+            },
         ],
     },
     {
