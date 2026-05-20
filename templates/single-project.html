@@ -45,6 +45,8 @@
             <ul class="header-nav">
                 <li><a href="{% url 'home' %}" title="home">Home</a></li>
                 <li><a href="{% url 'home' %}#about" title="about">About</a></li>
+                <li><a href="{% url 'home' %}#experience" title="experience">Experience</a></li>
+                <li><a href="{% url 'home' %}#tech-stack" title="tech-stack">Tech Stack</a></li>
                 <li class="current"><a href="{% url 'home' %}#projects" title="projects">Projects</a></li>
                 <li><a href="{% url 'home' %}#publications" title="publications">Publications</a></li>
                 <!--<li><a href="{% url 'home' %}#contact" title="contact">Contact</a></li>-->
@@ -105,36 +107,32 @@
                     <span>Project Links</span>
                     {% if project.code_url %}
                     <span class="blog-content__tag-list"><a href="{{ project.code_url }}" target="_blank">Code</a></span>
-                    {% elif project.project_link %}
-                    <span class="blog-content__tag-list"><a href="{{ project.project_link }}" target="_blank">Code</a></span>
                     {% endif %}
 
                     {% if project.demo_url %}
                     <span class="blog-content__tag-list"><a href="{{ project.demo_url }}" target="_blank">Demo</a></span>
-                    {% elif project.publication_link %}
-                    <span class="blog-content__tag-list"><a href="{{ project.publication_link }}" target="_blank">Demo</a></span>
                     {% endif %}
                 </p>
 
             </div><!-- end blog-content__main -->
 
-            <!-- Add after the project description or wherever you want references to appear -->
+            <!-- Add after the project description or wherever you want related publications to appear -->
 
-        {% if project.references.all %}
-        <div class="project-references">
-            <h3>References</h3>
+        {% if project.related_publications.all %}
+        <div class="project-related-publications">
+            <h3>Related Publications</h3>
             <ul class="references-list">
-                {% for reference in project.references.all %}
+                {% for publication in project.related_publications.all %}
                 <li>
-                    <a href="{{ reference.url }}" target="_blank" rel="noopener noreferrer">
-                        {{ reference.title }}
+                    <a href="{{ publication.url }}" target="_blank" rel="noopener noreferrer">
+                        {{ publication.title }}
                     </a>
                 </li>
                 {% endfor %}
             </ul>
         </div>
         {% endif %}
-        <!-- End of references section -->
+        <!-- End of related publications section -->
 
         </div> <!-- end blog-content -->
         

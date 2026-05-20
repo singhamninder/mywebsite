@@ -25,9 +25,9 @@
             <ul class="header-nav">
                 <li class="current"><a class="smoothscroll" href="#home" title="home">Home</a></li>
                 <li><a class="smoothscroll" href="#about" title="about">About</a></li>
+                <li><a class="smoothscroll" href="#experience" title="experience">Experience</a></li>
                 <li><a class="smoothscroll" href="#tech-stack" title="tech-stack">Tech Stack</a></li>
                 <li><a class="smoothscroll" href="#projects" title="projects">Projects</a></li>
-                <li><a class="smoothscroll" href="#experience" title="experience">Experience</a></li>
                 <li><a class="smoothscroll" href="#publications" title="publications">Publications</a></li>
             </ul>
         </nav>
@@ -143,6 +143,56 @@
         </div>
     </section>
 
+    <section id="experience" class="s-about target-section s-experience">
+        <div class="row narrow section-intro has-bottom-sep">
+            <div class="col-full text-center">
+                <h3>Experience</h3>
+            </div>
+        </div>
+
+        <div class="row about-content about-content--timeline">
+            <div class="col-six tab-full left">
+                <div class="timeline">
+                    {% for work in lworks %}
+                    <div class="timeline__block">
+                        <div class="timeline__bullet"></div>
+                        <div class="timeline__header">
+                            <p class="timeline__timeframe">{{ work.startdate }} - {{ work.enddate }}</p>
+                            <h3>{{ work.place }}</h3>
+                            <h5>{{ work.title }}</h5>
+                        </div>
+                        {% if work.description %}
+                        <div class="timeline__desc">
+                            <p>{{ work.description }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-six tab-full right">
+                <div class="timeline">
+                    {% for work in rworks %}
+                    <div class="timeline__block">
+                        <div class="timeline__bullet"></div>
+                        <div class="timeline__header">
+                            <p class="timeline__timeframe">{{ work.startdate }} - {{ work.enddate }}</p>
+                            <h3>{{ work.place }}</h3>
+                            <h5>{{ work.title }}</h5>
+                        </div>
+                        {% if work.description %}
+                        <div class="timeline__desc">
+                            <p>{{ work.description }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="tech-stack" class="s-tech target-section">
         <div class="row narrow section-intro has-bottom-sep">
             <div class="col-full">
@@ -218,14 +268,10 @@
                     <div class="project-card__links">
                         {% if project.code_url %}
                         <a href="{{ project.code_url }}" target="_blank" class="btn btn--stroke btn--small">Code</a>
-                        {% elif project.project_link %}
-                        <a href="{{ project.project_link }}" target="_blank" class="btn btn--stroke btn--small">Code</a>
                         {% endif %}
 
                         {% if project.demo_url %}
                         <a href="{{ project.demo_url }}" target="_blank" class="btn btn--primary btn--small">Demo</a>
-                        {% elif project.publication_link %}
-                        <a href="{{ project.publication_link }}" target="_blank" class="btn btn--primary btn--small">Demo</a>
                         {% endif %}
 
                         <a href="{% url 'project' project.id %}" class="btn btn--stroke btn--small">Details</a>
@@ -233,56 +279,6 @@
                 </div>
             </article>
             {% endfor %}
-        </div>
-    </section>
-
-    <section id="experience" class="s-about target-section s-experience">
-        <div class="row narrow section-intro has-bottom-sep">
-            <div class="col-full text-center">
-                <h3>Experience</h3>
-            </div>
-        </div>
-
-        <div class="row about-content about-content--timeline">
-            <div class="col-six tab-full left">
-                <div class="timeline">
-                    {% for work in lworks %}
-                    <div class="timeline__block">
-                        <div class="timeline__bullet"></div>
-                        <div class="timeline__header">
-                            <p class="timeline__timeframe">{{ work.startdate }} - {{ work.enddate }}</p>
-                            <h3>{{ work.place }}</h3>
-                            <h5>{{ work.title }}</h5>
-                        </div>
-                        {% if work.description %}
-                        <div class="timeline__desc">
-                            <p>{{ work.description }}</p>
-                        </div>
-                        {% endif %}
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div class="col-six tab-full right">
-                <div class="timeline">
-                    {% for work in rworks %}
-                    <div class="timeline__block">
-                        <div class="timeline__bullet"></div>
-                        <div class="timeline__header">
-                            <p class="timeline__timeframe">{{ work.startdate }} - {{ work.enddate }}</p>
-                            <h3>{{ work.place }}</h3>
-                            <h5>{{ work.title }}</h5>
-                        </div>
-                        {% if work.description %}
-                        <div class="timeline__desc">
-                            <p>{{ work.description }}</p>
-                        </div>
-                        {% endif %}
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
         </div>
     </section>
 
