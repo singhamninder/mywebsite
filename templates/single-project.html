@@ -190,22 +190,9 @@
             <div class="col-full">
 
                 <ul class="footer-social">
-
-                    <li><a href="https://www.linkedin.com/in/amninder-singh/" target="_blank">
-                        <i class="im im-linkedin" aria-hidden="true"></i>
-                        <span>LinkedIn</span>
-                    </a></li>
-
-                     <li><a href="https://github.com/singhamninder" target="_blank">
-                        <i class="im im-github" aria-hidden="true"></i>
-                        <span>Github</span>
-                    </a></li>
-
-                    <li><a href="mailto:amnindersingh13@gmail.com">
-                        <i class="im im-mail" aria-hidden="true"></i>
-                        <span>Email</span>
-                    </a></li>
-
+                    {% if info %}
+                    {% include "includes/social_links.html" %}
+                    {% endif %}
                 </ul>
 
             </div>

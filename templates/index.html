@@ -72,15 +72,7 @@
         </div>
 
         <ul class="home-social">
-            <li>
-                <a href="{{ info.linkedin }}" target="_blank"><i class="im im-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a>
-            </li>
-            <li>
-                <a href="mailto:amnindersingh13@gmail.com"><i class="im im-mail" aria-hidden="true"></i><span>Email</span></a>
-            </li>
-            <li>
-                <a href="https://github.com/singhamninder" target="_blank"><i class="im im-github" aria-hidden="true"></i><span>GitHub</span></a>
-            </li>
+            {% include "includes/social_links.html" %}
         </ul>
     </section>
 
@@ -304,20 +296,7 @@
         <div class="row">
             <div class="col-full">
                 <ul class="footer-social">
-                    <li><a href="{{ info.linkedin }}" target="_blank">
-                        <i class="im im-linkedin" aria-hidden="true"></i>
-                        <span>LinkedIn</span>
-                    </a></li>
-
-                    <li><a href="mailto:amnindersingh13@gmail.com">
-                        <i class="im im-mail" aria-hidden="true"></i>
-                        <span>Email</span>
-                    </a></li>
-
-                    <li><a href="https://github.com/singhamninder" target="_blank">
-                    <i class="im im-github" aria-hidden="true"></i>
-                    <span>GitHub</span>
-                    </a></li>
+                    {% include "includes/social_links.html" %}
                 </ul>
             </div>
         </div>

@@ -4,7 +4,16 @@ from .models import Info, Skill, Project, Tag, Publication, Work, RelatedPublica
 
 
 class InfoAdmin(admin.ModelAdmin):
-    fields = ("cv", "mainImage", "profile_image", "short_intro", "linkedin", "twitter")
+    fields = (
+        "cv",
+        "mainImage",
+        "profile_image",
+        "short_intro",
+        "linkedin",
+        "google_scholar",
+        "github",
+        "email",
+    )
 
 
 # Inline admin for related publications
