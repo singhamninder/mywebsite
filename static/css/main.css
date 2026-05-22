@@ -1954,6 +1954,16 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     transform: scale(1);
 }
 
+.im-scholar:before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    -webkit-mask: url("../icons/google-scholar.svg") center / contain no-repeat;
+    mask: url("../icons/google-scholar.svg") center / contain no-repeat;
+}
+
 
 /* animate .home-content__main
  * ------------------------------------------------------------------- */

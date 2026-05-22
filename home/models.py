@@ -7,7 +7,9 @@ class Info(models.Model):
     profile_image = models.ImageField(null=True, blank=True, default="default.jpg")
     short_intro = models.TextField(null=True, blank=True)
     linkedin = models.CharField(max_length=2000, null=True, blank=True)
-    twitter = models.CharField(max_length=2000, null=True, blank=True)
+    google_scholar = models.URLField(max_length=2000, null=True, blank=True)
+    github = models.URLField(max_length=2000, null=True, blank=True)
+    email = models.EmailField(max_length=300, null=True, blank=True)
 
     def __str__(self):
         return "MyInformation"

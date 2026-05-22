@@ -201,4 +201,5 @@ def home(request):
 
 def project(request, pk):
     projectObj = Project.objects.get(id=pk)
-    return render(request, "single-project.html", {"project": projectObj})
+    info = Info.objects.first()
+    return render(request, "single-project.html", {"project": projectObj, "info": info})
