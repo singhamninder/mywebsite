@@ -116,3 +116,32 @@ class RelatedPublication(models.Model):
     def __str__(self):
         title = str(self.title)
         return f"{title[:50]}... - {self.project.title}"
+
+
+class TechStackGroup(models.Model):
+    name = models.CharField(max_length=200)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order", "id"]
+
+    def __str__(self):
+        return self.name
+
+
+class TechStackItem(models.Model):
+    group = models.ForeignKey(
+        TechStackGroup,
+        on_delete=models.CASCADE,
+        related_name="items",
+    )
+    name = models.CharField(max_length=200)
+    icon_url = models.URLField(max_length=2000, blank=True)
+    label = models.CharField(max_length=20, blank=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order", "id"]
+
+    def __str__(self):
+        return self.name

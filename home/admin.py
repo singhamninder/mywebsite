@@ -1,6 +1,16 @@
 from django.contrib import admin
 
-from .models import Info, Skill, Project, Tag, Publication, Work, RelatedPublication
+from .models import (
+    Info,
+    Skill,
+    Project,
+    Tag,
+    Publication,
+    Work,
+    RelatedPublication,
+    TechStackGroup,
+    TechStackItem,
+)
 
 
 class InfoAdmin(admin.ModelAdmin):
@@ -73,6 +83,17 @@ class ProjectAdmin(admin.ModelAdmin):
     get_related_publication_count.short_description = "Related publications"
 
 
+class TechStackItemInline(admin.TabularInline):
+    model = TechStackItem
+    extra = 1
+    fields = ("name", "icon_url", "label", "order")
+
+
+class TechStackGroupAdmin(admin.ModelAdmin):
+    list_display = ("name", "order")
+    inlines = [TechStackItemInline]
+
+
 # Register all models
 admin.site.register(Info, InfoAdmin)
 admin.site.register(Skill)
@@ -81,4 +102,5 @@ admin.site.register(Tag)
 admin.site.register(Publication)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(RelatedPublication)
+admin.site.register(TechStackGroup, TechStackGroupAdmin)
 # admin.site.register(Contact)
