@@ -149,7 +149,7 @@
                     <div class="timeline__block">
                         <div class="timeline__bullet"></div>
                         <div class="timeline__header">
-                            <p class="timeline__timeframe">{{ work.startdate }} - {{ work.enddate }}</p>
+                            <p class="timeline__timeframe">{{ work.start_date|date:"M Y" }} – {% if work.end_date %}{{ work.end_date|date:"M Y" }}{% else %}Present{% endif %}</p>
                             <h3>{{ work.place }}</h3>
                             <h5>{{ work.title }}</h5>
                         </div>
@@ -169,7 +169,7 @@
                     <div class="timeline__block">
                         <div class="timeline__bullet"></div>
                         <div class="timeline__header">
-                            <p class="timeline__timeframe">{{ work.startdate }} - {{ work.enddate }}</p>
+                            <p class="timeline__timeframe">{{ work.start_date|date:"M Y" }} – {% if work.end_date %}{{ work.end_date|date:"M Y" }}{% else %}Present{% endif %}</p>
                             <h3>{{ work.place }}</h3>
                             <h5>{{ work.title }}</h5>
                         </div>
