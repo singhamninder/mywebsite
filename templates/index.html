@@ -200,14 +200,12 @@
                         <h4>{{ group.name }}</h4>
                         <ul class="stack-card__list">
                             {% for item in group.items %}
-                            <li class="stack-item {% if item.icon_class %}stack-item--devicon{% elif item.icon_svg %}stack-item--svg{% else %}stack-item--text{% endif %}">
+                            <li class="stack-item {% if item.icon_url %}stack-item--svg{% else %}stack-item--text{% endif %}">
                                 <span class="stack-icon-wrap">
-                                    {% if item.icon_svg %}
-                                    <img src="{{ item.icon_svg }}" alt="" loading="lazy">
-                                    {% elif item.icon_class %}
-                                    <i class="{{ item.icon_class }}" aria-hidden="true"></i>
+                                    {% if item.icon_url %}
+                                    <img src="{{ item.icon_url }}" alt="" loading="lazy">
                                     {% endif %}
-                                    <span class="stack-icon stack-icon--fallback {% if not item.icon_svg and not item.icon_class %}stack-icon--fallback-visible{% endif %}">
+                                    <span class="stack-icon stack-icon--fallback {% if not item.icon_url %}stack-icon--fallback-visible{% endif %}">
                                         {% if item.label %}
                                             {{ item.label }}
                                         {% else %}

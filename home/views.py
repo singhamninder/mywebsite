@@ -7,6 +7,7 @@ from .models import (
     Skill,
     Project,
     Publication,
+    TechStackGroup,
     Work,
     # Contact,
 )
@@ -16,123 +17,6 @@ from .models import (
 ## for sending email and contact
 # from django.core.mail import send_mail
 # from django.conf import settings
-
-TECH_STACK_GROUPS = [
-    {
-        "name": "Geospatial / Remote Sensing",
-        "items": [
-            {
-                "name": "Google Earth Engine",
-                "icon_svg": "https://cdn.simpleicons.org/googleearthengine/4285F4",
-                "label": "GEE",
-            },
-            {
-                "name": "Apache Sedona",
-                "icon_svg": "https://www.apache.org/logos/originals/sedona-2.svg",
-                "label": "Sedona",
-            },
-            {
-                "name": "Rasterio, Xarray, GeoPandas, Shapely",
-                "icon_svg": "https://cdn.simpleicons.org/python/3776AB",
-                "label": "Py",
-            },
-            {
-                "name": "QGIS",
-                "icon_svg": "https://cdn.simpleicons.org/qgis/589632",
-                "label": "QGIS",
-            },
-            {
-                "name": "Sentinel, Landsat, SAR",
-                "label": "EO",
-            },
-        ],
-    },
-    {
-        "name": "Machine Learning / Data",
-        "items": [
-            {
-                "name": "Python - Pandas, Numpy",
-                "icon_svg": "https://cdn.simpleicons.org/python/3776AB",
-                "label": "Py",
-            },
-            {
-                "name": "scikit-learn",
-                "icon_svg": "https://cdn.simpleicons.org/scikitlearn/F7931E",
-                "label": "SK",
-            },
-            {
-                "name": "PyTorch",
-                "icon_svg": "https://cdn.simpleicons.org/pytorch/EE4C2C",
-                "label": "PT",
-            },
-            {
-                "name": "TensorFlow",
-                "icon_svg": "https://cdn.simpleicons.org/tensorflow/FF6F00",
-                "label": "TF",
-            },
-        ],
-    },
-    {
-        "name": "Cloud / MLOps",
-        "items": [
-            {
-                "name": "Google Cloud - Vertex AI, Cloud Run, Cloud Storage",
-                "icon_svg": "https://cdn.simpleicons.org/googlecloud/4285F4",
-                "label": "GCP",
-            },
-            {
-                "name": "AWS - S3, Lambda, Sagemaker",
-                "icon_svg": "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
-                "label": "AWS",
-            },
-            {
-                "name": "Apache Airflow",
-                "icon_svg": "https://cdn.simpleicons.org/apacheairflow/017CEE",
-                "label": "Airflow",
-            },
-            {
-                "name": "MLflow",
-                "icon_svg": "https://cdn.simpleicons.org/mlflow/0194E2",
-                "label": "MLflow",
-            },
-            {
-                "name": "Docker",
-                "icon_svg": "https://cdn.simpleicons.org/docker/2496ED",
-                "label": "DKR",
-            },
-            {
-                "name": "GitHub Actions",
-                "icon_svg": "https://cdn.simpleicons.org/githubactions/2088FF",
-                "label": "GHA",
-            },
-            {
-                "name": "Git",
-                "icon_svg": "https://cdn.simpleicons.org/git/F05032",
-                "label": "Git",
-            },
-        ],
-    },
-    {
-        "name": "App / Web / Deployment",
-        "items": [
-            {
-                "name": "Streamlit",
-                "icon_svg": "https://cdn.simpleicons.org/streamlit/FF4B4B",
-                "label": "ST",
-            },
-            {
-                "name": "Django",
-                "icon_svg": "https://cdn.simpleicons.org/django/092E20",
-                "label": "DJ",
-            },
-            {
-                "name": "FastAPI",
-                "icon_svg": "https://cdn.simpleicons.org/fastapi/009688",
-                "label": "FA",
-            },
-        ],
-    },
-]
 
 HERO_ROTATING_PHRASES = [
     "AI/ML pipelines",
@@ -192,7 +76,7 @@ def home(request):
         "projects": projects,
         "featured_projects": featured_projects,
         "publications": publications,
-        "tech_stack_groups": TECH_STACK_GROUPS,
+        "tech_stack_groups": TechStackGroup.objects.prefetch_related("items"),
         "hero_rotating_phrases": HERO_ROTATING_PHRASES,
     }
 
