@@ -118,16 +118,18 @@
 
             <!-- Add after the project description or wherever you want related publications to appear -->
 
-        {% if project.related_publications.all %}
+        {% if project.publications.all or project.related_publications.all %}
         <div class="project-related-publications">
-            <h3>Related Publications</h3>
+            <h3>References</h3>
             <ul class="references-list">
-                {% for publication in project.related_publications.all %}
+                {% for publication in project.publications.all %}
                 <li>
-                    <a href="{{ publication.url }}" target="_blank" rel="noopener noreferrer">
-                        {{ publication.title }}
-                    </a>
+                    <a href="{{ publication.link }}" target="_blank" rel="noopener noreferrer">{{ publication.title }}</a>
+                    {% if publication.year %}<span> ({{ publication.year }})</span>{% endif %}
                 </li>
+                {% endfor %}
+                {% for publication in project.related_publications.all %}
+                <li><a href="{{ publication.url }}" target="_blank" rel="noopener noreferrer">{{ publication.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>

@@ -282,7 +282,11 @@
         {% for publication in publications %}
         <div class="row blog-content">
             <article class="col-block">
-                <p><a href="{{ publication.link }}" target="_blank" style="color: black">{{ publication.title }}</a></p>
+                <p>
+                    <a href="{{ publication.link }}" target="_blank" style="color: black">{{ publication.title }}</a>
+                    {% if publication.year %} ({{ publication.year }}){% endif %}
+                    {% if publication.venue %} — {{ publication.venue }}{% endif %}
+                </p>
             </article>
         </div>
         {% endfor %}

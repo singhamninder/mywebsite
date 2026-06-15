@@ -10,6 +10,8 @@ class Info(models.Model):
     google_scholar = models.URLField(max_length=2000, null=True, blank=True)
     github = models.URLField(max_length=2000, null=True, blank=True)
     email = models.EmailField(max_length=300, null=True, blank=True)
+    orcid = models.CharField(max_length=100, blank=True, default="")
+    openalex_author_id = models.CharField(max_length=100, blank=True, default="")
 
     def __str__(self):
         return "MyInformation"
@@ -51,6 +53,7 @@ class Project(models.Model):
     demo_url = models.URLField(max_length=2000, null=True, blank=True)
     featured = models.BooleanField(default=False)
     tags = models.ManyToManyField("Tag", blank=True)
+    publications = models.ManyToManyField("Publication", blank=True, related_name="projects")
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -68,16 +71,24 @@ class Tag(models.Model):
 
 
 class Publication(models.Model):
-    no = models.CharField(max_length=60)
+    SOURCE_CHOICES = [("manual", "Manual"), ("openalex", "OpenAlex")]
+
+    no = models.CharField(max_length=60, null=True, blank=True)
     title = models.TextField(max_length=2000)
     link = models.TextField(max_length=2000, null=True, blank=True)
+    year = models.IntegerField(null=True, blank=True)
+    authors = models.TextField(blank=True, default="")
+    venue = models.CharField(max_length=500, blank=True, default="")
+    doi = models.CharField(max_length=500, unique=True, null=True, blank=True)
+    openalex_id = models.CharField(max_length=100, unique=True, null=True, blank=True)
+    source = models.CharField(max_length=20, choices=SOURCE_CHOICES, default="manual")
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.no
+        return str(self.title)[:80]
 
     class Meta:
-        ordering = ["-no"]
+        ordering = [models.F("year").desc(nulls_last=True), "-created"]
 
 
 class Contact(models.Model):

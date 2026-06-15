@@ -75,6 +75,6 @@ def home(request):
 
 
 def project(request, pk):
-    projectObj = Project.objects.get(id=pk)
+    projectObj = Project.objects.prefetch_related("publications", "related_publications").get(id=pk)
     info = Info.objects.first()
     return render(request, "single-project.html", {"project": projectObj, "info": info})

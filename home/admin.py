@@ -1,4 +1,9 @@
-from django.contrib import admin
+from io import StringIO
+
+from django.contrib import admin, messages
+from django.core.management import call_command
+from django.shortcuts import redirect
+from django.urls import path
 
 from .models import (
     Info,
@@ -23,7 +28,22 @@ class InfoAdmin(admin.ModelAdmin):
         "google_scholar",
         "github",
         "email",
+        "orcid",
+        "openalex_author_id",
     )
+
+    def get_form(self, request, obj=None, change=False, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields["orcid"].help_text = (
+            "Optional ORCID id (e.g. 0000-0002-1825-0097). "
+            "Used to resolve your OpenAlex author id when openalex_author_id is empty."
+        )
+        form.base_fields["openalex_author_id"].help_text = (
+            'OpenAlex author id (e.g. "A5023888391"). '
+            "Find it at openalex.org (Authors tab) or via "
+            "https://api.openalex.org/authors/orcid:<your-orcid>"
+        )
+        return form
 
 
 # Inline admin for related publications
@@ -68,10 +88,11 @@ class ProjectAdmin(admin.ModelAdmin):
         "demo_url",
         "featured",
         "tags",
+        "publications",
     )
 
-    # Allow multiple selection for tags
-    filter_horizontal = ("tags",)
+    # Allow multiple selection for tags and linked publications
+    filter_horizontal = ("tags", "publications")
 
     # Include the related publications inline
     inlines = [RelatedPublicationInline]
@@ -94,12 +115,44 @@ class TechStackGroupAdmin(admin.ModelAdmin):
     inlines = [TechStackItemInline]
 
 
+class PublicationAdmin(admin.ModelAdmin):
+    list_display = ("title", "year", "venue", "source")
+    list_filter = ("source", "year")
+    search_fields = ("title", "authors", "doi")
+    change_list_template = "admin/home/publication/change_list.html"
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path(
+                "sync/",
+                self.admin_site.admin_view(self.sync_publications_view),
+                name="home_publication_sync",
+            ),
+        ]
+        return custom_urls + urls
+
+    def sync_publications_view(self, request):
+        if request.method != "POST":
+            return redirect("admin:home_publication_changelist")
+
+        stdout = StringIO()
+        try:
+            call_command("sync_publications", stdout=stdout)
+            summary = stdout.getvalue().strip()
+            messages.success(request, f"Publications synced from OpenAlex: {summary}")
+        except Exception as exc:
+            messages.error(request, f"Sync failed: {exc}")
+
+        return redirect("admin:home_publication_changelist")
+
+
 # Register all models
 admin.site.register(Info, InfoAdmin)
 admin.site.register(Skill)
 admin.site.register(Work)
 admin.site.register(Tag)
-admin.site.register(Publication)
+admin.site.register(Publication, PublicationAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(RelatedPublication)
 admin.site.register(TechStackGroup, TechStackGroupAdmin)
