@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import sys
 from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,6 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
+USE_MANIFEST_STATICFILES = config("USE_MANIFEST_STATICFILES", default=True, cast=bool)
 
 if not DEBUG:
     # Security Headers
@@ -144,12 +144,13 @@ STORAGES = {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": (
+            "whitenoise.storage.CompressedManifestStaticFilesStorage"
+            if USE_MANIFEST_STATICFILES
+            else "django.contrib.staticfiles.storage.StaticFilesStorage"
+        ),
     },
 }
-
-if "test" in sys.argv:
-    STORAGES["staticfiles"]["BACKEND"] = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "static/images")
 
