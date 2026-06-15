@@ -25,8 +25,8 @@ class Skill(models.Model):
 
 
 class Work(models.Model):
-    startdate = models.CharField(max_length=60, null=True, blank=True)
-    enddate = models.CharField(max_length=60, null=True, blank=True)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)  # null = Present
     title = models.CharField(max_length=200)
     place = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
@@ -36,7 +36,7 @@ class Work(models.Model):
         return self.title
 
     class Meta:
-        ordering = ["-created"]
+        ordering = [models.F("end_date").desc(nulls_first=True), "-start_date"]
 
 
 class Project(models.Model):
