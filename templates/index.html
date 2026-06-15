@@ -199,7 +199,7 @@
                     <article class="stack-card">
                         <h4>{{ group.name }}</h4>
                         <ul class="stack-card__list">
-                            {% for item in group.items %}
+                            {% for item in group.items.all %}
                             <li class="stack-item {% if item.icon_url %}stack-item--svg{% else %}stack-item--text{% endif %}">
                                 <span class="stack-icon-wrap">
                                     {% if item.icon_url %}
