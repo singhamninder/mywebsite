@@ -44,11 +44,7 @@ def work_to_publication_fields(work: dict[str, Any]) -> dict[str, Any] | None:
     source = primary_location.get("source") or {}
     venue = source.get("display_name") or ""
 
-    link = (
-        primary_location.get("landing_page_url")
-        or doi
-        or work.get("id")
-    )
+    link = primary_location.get("landing_page_url") or doi or work.get("id")
 
     return {
         "openalex_id": openalex_id,

@@ -44,6 +44,7 @@ def mock_openalex_get(url, params=None, timeout=None):
     response.json.return_value = OPENALEX_WORKS_PAGE
     return response
 
+
 class WorkOrderingTests(TestCase):
     """Verify Work entries sort current roles first, then by date."""
 
