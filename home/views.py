@@ -1,3 +1,5 @@
+from math import ceil
+
 from django.shortcuts import (
     # redirect,
     render,
@@ -146,20 +148,9 @@ def home(request):
     infos = Info.objects.all()
     skills = Skill.objects.exclude(description__exact="")
     otherskills = Skill.objects.filter(description="")
-    lworks = Work.objects.filter(
-        title__in=[
-            "Data Scientist",
-            "Geospatial Data Scientist (Contract)",
-            "Post-Doctoral Scholar",
-        ]
-    )
-    rworks = Work.objects.exclude(
-        title__in=[
-            "Data Scientist",
-            "Geospatial Data Scientist (Contract)",
-            "Post-Doctoral Scholar",
-        ]
-    )
+    works = list(Work.objects.all())
+    mid = ceil(len(works) / 2)
+    lworks, rworks = works[:mid], works[mid:]
     projects = Project.objects.all()
     featured_projects = projects.filter(featured=True)
     if not featured_projects.exists():
