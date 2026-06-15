@@ -17,6 +17,7 @@ jobs:
       SECRET_KEY: ci-secret-key
       DEBUG: "True"
       ALLOWED_HOSTS: localhost,127.0.0.1,testserver
+      USE_MANIFEST_STATICFILES: "False"
 
     steps:
       - name: Checkout repository

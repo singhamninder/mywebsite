@@ -28,6 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
+USE_MANIFEST_STATICFILES = config("USE_MANIFEST_STATICFILES", default=True, cast=bool)
 
 if not DEBUG:
     # Security Headers
@@ -143,7 +144,11 @@ STORAGES = {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": (
+            "whitenoise.storage.CompressedManifestStaticFilesStorage"
+            if USE_MANIFEST_STATICFILES
+            else "django.contrib.staticfiles.storage.StaticFilesStorage"
+        ),
     },
 }
 
