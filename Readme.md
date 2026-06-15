@@ -24,7 +24,7 @@ A production-ready Django portfolio site—deployed seamlessly to AWS Lightsail 
 
 ## 🛠️ Deployment Highlights
 
-**AWS Lightsail**  
+**AWS Lightsail**
 - Ubuntu 22.04 LTS instance
 - Codebase cloned from GitHub and deployed via virtualenv
 - Gunicorn managed by systemd; Nginx reverse proxies to Gunicorn socket
@@ -55,6 +55,13 @@ uv run python manage.py collectstatic
 ## Code Quality Tools
 
 ```bash
+# One-time setup
+uv sync --locked --dev
+uv run pre-commit install
+
+# Run manually against entire repo
+uv run pre-commit run --all-files
+
 # Format/lint checks
 uv run ruff format .
 uv run ruff check .
@@ -62,6 +69,9 @@ uv run ruff check .
 # Phased typing rollout (start with app code)
 uv run ty check home
 ```
+
+Pre-commit auto-formats and fixes where possible on each commit. If Ruff modifies
+files, stage the changes and commit again.
 
 ---
 
@@ -108,4 +118,3 @@ The workflow runs `scripts/deploy_lightsail.sh` remotely to:
 ```bash
 uv export --format requirements-txt --no-dev -o requirements.txt
 ```
-

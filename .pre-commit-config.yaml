@@ -1,0 +1,47 @@
+exclude: ^(\.venv/|staticfiles/|home/migrations/)
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=500]
+
+  - repo: local
+    hooks:
+      - id: ruff-format
+        name: ruff format
+        entry: uv run ruff format
+        language: system
+        types: [python]
+
+      - id: ruff-check
+        name: ruff check
+        entry: uv run ruff check --fix
+        language: system
+        types: [python]
+
+      - id: ty-check
+        name: ty check
+        entry: uv run ty check home
+        language: system
+        pass_filenames: false
+        files: ^home/.*\.py$
+
+      - id: django-check
+        name: django check
+        entry: bash -c 'SECRET_KEY=pre-commit-secret-key DEBUG=True ALLOWED_HOSTS=localhost,127.0.0.1,testserver uv run python manage.py check'
+        language: system
+        pass_filenames: false
+        files: ^(home|mywebsite)/.*\.py$
+
+      - id: django-migrations
+        name: check migration drift
+        entry: bash -c 'SECRET_KEY=pre-commit-secret-key DEBUG=True ALLOWED_HOSTS=localhost,127.0.0.1,testserver uv run python manage.py makemigrations --check --dry-run'
+        language: system
+        pass_filenames: false
+        files: ^home/models\.py$

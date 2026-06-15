@@ -41,16 +41,16 @@
             // force page scroll position to top at page refresh
             // $('html, body').animate({ scrollTop: 0 }, 'normal');
 
-            // will first fade out the loading animation 
+            // will first fade out the loading animation
             $("#loader").fadeOut("slow", function() {
                 // will fade out the whole DIV that covers the website.
                 $("#preloader").delay(300).fadeOut("slow");
-            }); 
-            
-            // for hero content animations 
+            });
+
+            // for hero content animations
             $("html").removeClass('ss-preload');
             $("html").addClass('ss-loaded');
-        
+
         });
     };
 
@@ -108,7 +108,7 @@
 
 
     /* Mobile Menu
-     * ---------------------------------------------------- */ 
+     * ---------------------------------------------------- */
     var ssMobileMenu = function() {
 
         var toggleButton = $('.header-menu-toggle'),
@@ -132,7 +132,7 @@
 
             if (nav.hasClass('mobile')) {
                 toggleButton.toggleClass('is-clicked');
-                nav.slideToggle(); 
+                nav.slideToggle();
             }
         });
 
@@ -140,7 +140,7 @@
 
 
     /* Masonry
-     * ---------------------------------------------------- */ 
+     * ---------------------------------------------------- */
     var ssMasonryFolio = function () {
 
         var containerBricks = $('.masonry');
@@ -174,7 +174,7 @@
                     $size = $thumbLink.data('size').split('x'),
                     $width  = $size[0],
                     $height = $size[1];
-         
+
                 var item = {
                     src  : $href,
                     w    : $width,
@@ -189,8 +189,8 @@
             });
 
             // bind click event
-            //This CLICK EVENT CAUSES JS ERROR WHICH PREVENTS THE PROJECT DETAILS PAGE FROM 
-            // LOADING, SO COMMNET IT OUT 
+            //This CLICK EVENT CAUSES JS ERROR WHICH PREVENTS THE PROJECT DETAILS PAGE FROM
+            // LOADING, SO COMMNET IT OUT
 
             // $folioItems.each(function(i) {
 
@@ -214,7 +214,7 @@
     /* slick slider
      * ------------------------------------------------------ */
     var ssSlickSlider = function() {
-        
+
         $('.testimonials__slider').slick({
             arrows: true,
             dots: false,
@@ -222,7 +222,7 @@
             slidesToShow: 2,
             slidesToScroll: 1,
             prevArrow: "<div class=\'slick-prev\'><i class=\'im im-arrow-left\' aria-hidden=\'true\'></i></div>",
-            nextArrow: "<div class=\'slick-next\'><i class=\'im im-arrow-right\' aria-hidden=\'true\'></i></div>",       
+            nextArrow: "<div class=\'slick-next\'><i class=\'im im-arrow-right\' aria-hidden=\'true\'></i></div>",
             pauseOnFocus: false,
             autoplaySpeed: 1500,
             responsive: [
@@ -266,7 +266,7 @@
             offset: '25%'
 
         });
-        
+
     };
 
 
@@ -295,7 +295,7 @@
                         });
                     });
 
-                } 
+                }
 
                 // trigger once only
                 this.destroy();
@@ -315,7 +315,7 @@
         $('.smoothscroll').on('click', function (e) {
             var target = this.hash,
             $target    = $(target);
-        
+
             e.preventDefault();
             e.stopPropagation();
 
@@ -332,7 +332,7 @@
     /* Placeholder Plugin Settings
      * ------------------------------------------------------ */
     var ssPlaceholder = function() {
-        $('input, textarea, select').placeholder();  
+        $('input, textarea, select').placeholder();
     };
 
 
@@ -342,62 +342,62 @@
 
         $('.alert-box').on('click', '.alert-box__close', function() {
             $(this).parent().fadeOut(500);
-        }); 
+        });
 
     };
 
 
-    /* Contact Form  -  COMMENTED IT OUT BECASUE HINDERING THE 
+    /* Contact Form  -  COMMENTED IT OUT BECASUE HINDERING THE
     // SUCCESS MESSAGE
      * ------------------------------------------------------ */
     // var ssContactForm = function() {
 
     //     /* local validation */
 	//     $('#contactForm').validate({
-        
+
     //         /* submit via ajax */
     //         submitHandler: function(form) {
-    
+
     //             var sLoader = $('.submit-loader');
-    
+
     //             $.ajax({
-    
+
     //                 type: "POST",
     //                 url: "",
     //                 data: $(form).serialize(),
-    //                 beforeSend: function() { 
-    
+    //                 beforeSend: function() {
+
     //                     sLoader.slideDown("slow");
-    
+
     //                 },
     //                 success: function(msg) {
-    
+
     //                     // Message was sent
     //                     if (msg == 'OK') {
-    //                         sLoader.slideUp("slow"); 
+    //                         sLoader.slideUp("slow");
     //                         $('.message-warning').fadeOut();
     //                         $('#contactForm').fadeOut();
     //                         $('.message-success').fadeIn();
     //                     }
     //                     // There was an error
     //                     else {
-    //                         sLoader.slideUp("slow"); 
+    //                         sLoader.slideUp("slow");
     //                         $('.message-warning').html(msg);
     //                         $('.message-warning').slideDown("slow");
     //                     }
-    
+
     //                 },
     //                 error: function() {
-    
-    //                     sLoader.slideUp("slow"); 
+
+    //                     sLoader.slideUp("slow");
     //                     $('.message-warning').html("Something went wrong. Please try again.");
     //                     $('.message-warning').slideDown("slow");
-    
+
     //                 }
-    
+
     //             });
     //         }
-    
+
     //     });
     // };
 
