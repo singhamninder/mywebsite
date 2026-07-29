@@ -4325,7 +4325,17 @@ html.no-devicon .stack-item--devicon .stack-icon--fallback {
 
 .project-grid {
     margin-top: 4.2rem;
-    row-gap: 3.2rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.2rem;
+    align-items: start;
+}
+
+.project-grid > .project-card {
+    float: none;
+    width: auto;
+    max-width: none;
+    padding: 0;
 }
 
 .project-card {
@@ -4431,6 +4441,9 @@ html.no-devicon .stack-item--devicon .stack-icon--fallback {
         justify-content: center;
     }
     .stack-card__list {
+        grid-template-columns: 1fr;
+    }
+    .project-grid {
         grid-template-columns: 1fr;
     }
 }
