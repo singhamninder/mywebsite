@@ -233,7 +233,7 @@
 
         <div class="row project-grid">
             {% for project in featured_projects %}
-            <article class="col-six tab-full project-card {% if forloop.first %}project-card--featured{% endif %}">
+            <article class="project-card {% if forloop.first %}project-card--featured{% endif %}">
                 <div class="project-card__media">
                     <a href="{% url 'project' project.id %}">
                         <img src="{{ project.featured_image.url }}" alt="{{ project.title }}">
